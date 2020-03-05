@@ -14,30 +14,22 @@ namespace Proyecto1_OLC1
     {
         private string ruta;
         private string nombre;
+
         public TextControl()
         {
             InitializeComponent();
         }
 
-        public string Ruta
-        {
-            get { return ruta; }
-            set { ruta = value; }
-        }
-        
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value;  }
-        }
+        public string Ruta { get => ruta; set => ruta = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
 
-        public string textoEntrada
+        public string TextoEntrada
         {
             get { return this.textEntrada.Text; }
             set { this.textEntrada.Text = value; }
         }
 
-        
+       
     }
 
 }

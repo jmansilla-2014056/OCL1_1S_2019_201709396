@@ -34,9 +34,9 @@
             // textEntrada
             // 
             this.textEntrada.AccessibleName = "textEntrada";
-            this.textEntrada.Location = new System.Drawing.Point(3, 13);
+            this.textEntrada.Location = new System.Drawing.Point(3, 3);
             this.textEntrada.Name = "textEntrada";
-            this.textEntrada.Size = new System.Drawing.Size(517, 242);
+            this.textEntrada.Size = new System.Drawing.Size(517, 406);
             this.textEntrada.TabIndex = 0;
             this.textEntrada.Text = "";
             this.textEntrada.WordWrap = false;
@@ -47,7 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textEntrada);
             this.Name = "TextControl";
-            this.Size = new System.Drawing.Size(526, 275);
+            this.Size = new System.Drawing.Size(526, 412);
             this.ResumeLayout(false);
 
         }

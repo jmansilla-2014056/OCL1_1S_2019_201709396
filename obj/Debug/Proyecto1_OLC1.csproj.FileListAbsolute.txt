@@ -2,10 +2,10 @@ C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\bin\Debug\Proyecto1_OLC
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\bin\Debug\Proyecto1_OLC1.exe
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\bin\Debug\Proyecto1_OLC1.pdb
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.csprojAssemblyReference.cache
-C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.Form1.resources
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.Properties.Resources.resources
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.csproj.GenerateResource.cache
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.exe
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.pdb
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.TextControl.resources
+C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.Editor.resources
