@@ -1,4 +1,5 @@
-﻿using Proyecto1_OLC1.models;
+﻿using Proyecto1_OLC1.manejador;
+using Proyecto1_OLC1.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,23 +46,49 @@ namespace Proyecto1_OLC1
             contador = 0;
         }
 
+        private void reporteXml()
+        {
+            
+                using (var sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\report.xml"))
+                {
+                    if (!listaErrores.Any())
+                    {
+                        TokenGroup tg = new TokenGroup();
+                        tg.token = listaTokens.ToArray();
+                        XmlSerializer serializer = new XmlSerializer(typeof(TokenGroup));
+                        serializer.Serialize(sw, tg);
+
+                    }
+                    else
+                    {
+                        ErrorGroup eg = new ErrorGroup();
+                        eg.error = listaErrores.ToArray();
+                        XmlSerializer serializer = new XmlSerializer(typeof(ErrorGroup));
+                        serializer.Serialize(sw, eg);
+                    }
+                    System.Diagnostics.Process.Start("chrome", AppDomain.CurrentDomain.BaseDirectory + @"\report.xml");
+                }
+            
+        }
+
         private void buttonAnalizar_Click(object sender, EventArgs e)
         {
             limpieza();
             generador();
+            ManejarToken mt = new ManejarToken();
+            mt.parser(listaTokens);
+            reporteXml();
             
-            using (var sw = new StreamWriter(@"c:\Users\User\Desktop\test.xml"))
-            {
-                TokenGroup tg = new TokenGroup();
-                tg.tokens = listaTokens.ToArray();
-                XmlSerializer serializer = new XmlSerializer(typeof(TokenGroup));
-                serializer.Serialize(sw, tg);
-            }
+            
+
 
         }
 
+
+
         private void generador()
         {
+
             listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada += " ";       
             char[] analizar = listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada.ToArray();
 
@@ -435,11 +462,12 @@ namespace Proyecto1_OLC1
             TabPage tp = new TabPage(listaEntrada.ElementAt(listaEntrada.Count - 1).Nombre);
             this.tabControl.TabPages.Add(tp);
             tp.Controls.Add(listaEntrada.ElementAt(listaEntrada.Count - 1));
+            habilitar();
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            habilitar();
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
@@ -520,6 +548,16 @@ namespace Proyecto1_OLC1
             guardarComo();
         }
 
-       
+        private void buttonReport_Click(object sender, EventArgs e)
+        {
+            reporteXml();
+        }
+
+        private void habilitar()
+        {
+            this.buttonAnalizar.Enabled = true;
+            this.buttonReport.Enabled = true;
+        }
+
     }
 }

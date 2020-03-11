@@ -1,0 +1,450 @@
+﻿using Proyecto1_OLC1.models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Proyecto1_OLC1.manejador
+{
+    class ManejarToken
+    {
+        List<Token> listaTokens = new List<Token>();
+        List<Conjunto> listaConjuntos = new List<Conjunto>();
+        Conjunto conj = new Conjunto();
+        
+        char caracter = new Char();
+        int x = -1;
+        String nombreEr = "";
+        String nombreConj = "";
+
+        public void parser(List<Token> lt)
+        {
+            listaTokens = lt;
+            conjOrID(consumir());
+
+            foreach(Conjunto u in listaConjuntos)
+            {
+                MessageBox.Show(u.NombreConjunto);
+                MessageBox.Show(u.Caracteres.ToString());
+
+                Console.WriteLine("---------------------------------------------");
+            }
+
+        }
+
+        public Token consumir()
+        {
+            x++;
+            if (x <= listaTokens.Count) {
+                return listaTokens.ElementAt(x);
+
+            }
+            else{
+                return null;
+            }
+
+        }
+
+        void addRange(Token t)
+        {
+            char c = caracter;
+            if (t.Lexema.Length == 1)
+            {
+                c = t.Lexema[0];
+            }
+            else
+            {
+                c = t.Lexema[0];
+                Editor.AddError(t, "se esperaba un char");
+            }
+
+  
+            if (!(caracter < c))
+            {
+                char temp = caracter;
+                caracter = c;
+                c = temp;
+            }
+            for(int x = (int)caracter; x <= (int)c; x++)
+            {
+                conj.Caracteres.Add((char)x);
+            }
+        }
+
+        void addChar(Token t)
+        {
+            if (t.Lexema.Length == 1)
+            {
+                conj.Caracteres.Add(t.Lexema[0]);
+            }
+            else
+            {
+                conj.Caracteres.Add(t.Lexema[0]);
+                Editor.AddError(t, "se esperaba un char");
+            }
+        }
+
+        //Que venga conjunto o Id
+        void conjOrID(Token t)
+        {
+            if (t.Id == 1)
+            {
+                dosPuntos(consumir());
+            }
+            else if (t.Id == 32)
+            {
+                this.nombreEr = t.Lexema;
+                guionOrdosPuntos(consumir());
+            }
+            
+            else
+            {
+                Editor.AddError(t, "Se esperaba CONJ o Identificador");
+            }
+        }
+
+        //Entra en id se espera guion o dos puntos
+        void guionOrdosPuntos(Token t)
+        {
+            if (true)
+            {
+                foreach (Conjunto u in listaConjuntos)
+                {
+                    MessageBox.Show(u.NombreConjunto);
+                    MessageBox.Show(u.Caracteres.ToString());
+
+                    Console.WriteLine("---------------------------------------------");
+                }
+            }
+        }
+
+
+
+
+        //Entro a Conj se esperan pos puntos
+        void dosPuntos(Token t)
+        {
+            if (t.Id == 58)
+            {
+                id(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban :");
+            }
+        }
+
+        //Entran a 2 puntos se espera id
+        void id(Token t)
+        {
+            if (t.Id == 32)
+            {
+                this.nombreConj = t.Lexema;
+                guion(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban id");
+            }
+        }
+
+        //Entra en id se espera guion
+        void guion(Token t)
+        {
+            if (t.Id == 45)
+            {
+                mayor(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban -");
+            }
+        }
+
+        //Entra en guion se espera mayor >
+        void mayor(Token t)
+        {
+            if (t.Id == 62)
+            {
+                idOrNumOrSymbol(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban >");
+            }
+        }
+
+        //Entra en > se espera Identificador o Numero o Simbolo
+        void idOrNumOrSymbol(Token t)
+        {
+            caracter = t.Lexema[0];
+            addChar(t);
+            //Id
+            if (t.Id == 32)
+            {
+                VirOrComaOrPunto0(consumir());
+            }
+            //Numero
+            else if (t.Id == 30)
+            {
+                VirOrComaOrPunto1(consumir());
+            }
+            else if (t.Id >= 33 && t.Id <= 125)
+            //Simbolo
+            {
+                VirOrComaOrPunto2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban id o numero o simbolos validos");
+            }
+
+        }
+
+        //Entra en Id se espeta coma o virgulilla o punto y coma
+        void VirOrComaOrPunto0(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conj.NombreConjunto = this.nombreConj;
+                listaConjuntos.Add(conj);
+                caracter = new Char();
+                conj = new Conjunto();
+                conjOrID(consumir());                 
+            }
+            //Viene ,?  
+            else if (t.Id == 44)
+            {
+                id1(consumir());
+            }
+            //Viene ~?
+            else if (t.Id == 126)
+            {
+                id2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban >");
+            }
+        }
+
+        //Entra en numero se espera virgulilla o otro numero o punto y coma
+        void VirOrComaOrPunto1(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conj.NombreConjunto = this.nombreConj;
+                listaConjuntos.Add(conj);
+                caracter = new Char();
+                conj = new Conjunto();
+                conjOrID(consumir());
+                 
+            }
+            //Viene ,?   
+            else if (t.Id == 44)
+            {
+                num1(consumir());
+                
+            }
+            //Viene ~?
+            else if (t.Id == 126)
+            {
+                
+                num2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban >");
+            }
+        }     
+       
+        //Entran en simbolo se espera punto y coma o coma o virgulilla
+        void VirOrComaOrPunto2(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conj.NombreConjunto = this.nombreConj;
+                listaConjuntos.Add(conj);
+                caracter = new Char();
+                conj = new Conjunto();
+                conjOrID(consumir());
+            }
+            //Viene ,?    
+            else if (t.Id == 44)
+            {
+                symbol1(consumir());               
+            }
+            //Viene ~?
+            else if (t.Id == 126)
+            {
+                symbol2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban >");
+            }
+        }
+       
+        void comaOrPunto0(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conjOrID(consumir());
+            }
+            //Viene ,?    
+            else if (t.Id == 44)
+            {
+                id1(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban , o ;");
+            }
+        }
+
+        void comaOrPunto1(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conjOrID(consumir());
+                //Viene ,?    
+            }
+            else if (t.Id == 44)
+            {
+                num1(consumir());
+
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban , o ;");
+            }
+        }
+
+
+        void comaOrPunto2(Token t)
+        {
+            //viene punto y coma?
+            if (t.Id == 59)
+            {
+                conjOrID(consumir());
+                //Viene ,?    
+            }
+            else if (t.Id == 44)
+            {
+                symbol1(consumir());
+
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban , o ;");
+            }
+        }
+
+
+        void id1(Token t)
+        {
+            addChar(t);
+            if (t.Id == 32)
+            {
+                comaOrPunto0(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban id");
+            }
+        }
+
+        void id2(Token t)
+        {
+            addRange(t);
+            if (t.Id == 32)
+            {
+                puntoYcoma(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban id");
+            }
+        }
+
+
+        void num1(Token t)
+        {
+            addChar(t);
+            if (t.Id == 30)
+            {
+                comaOrPunto1(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban numero");
+            }
+        }
+
+        void num2(Token t)
+        {
+            addRange(t);
+            if (t.Id == 30)
+            {
+                puntoYcoma(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban numero");
+            }
+        }
+
+
+        void symbol1(Token t)
+        {
+            addChar(t);
+            if (t.Id >= 33 && t.Id <= 125)
+            {
+                comaOrPunto2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban simbolo valido");
+            }
+        }
+
+
+        void symbol2(Token t)
+        {
+            addRange(t);
+            if (t.Id >= 33 && t.Id <= 125)
+            {
+                puntoYcoma(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaban simbolo valido");
+            }
+        }
+
+        void puntoYcoma(Token t)
+        {
+            if (t.Id == 59)
+            {
+                conj.NombreConjunto = this.nombreConj;
+                listaConjuntos.Add(conj);
+                caracter = new Char();
+                conj = new Conjunto();
+                conjOrID(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "Se esperaba ;");
+            }
+        }
+
+
+    }
+}

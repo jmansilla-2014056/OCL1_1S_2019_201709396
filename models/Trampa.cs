@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Proyecto1_OLC1.models
 {
-
+    [XmlRoot("Trampa")]
     public class Trampa
     {
         private string error;
@@ -14,12 +15,18 @@ namespace Proyecto1_OLC1.models
         private int fila;
         private int columna;
 
+
         public Trampa(string error, string descrip, int fila, int columna)
         {
             this.Error = error;
             this.Descrip = descrip;
             this.Fila = fila;
             this.Columna = columna;
+        }
+
+        public Trampa()
+        {
+
         }
 
         public string Error { get => error; set => error = value; }

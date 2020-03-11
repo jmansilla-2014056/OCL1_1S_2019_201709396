@@ -53,7 +53,10 @@
     <Compile Include="Editor.Designer.cs">
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
+    <Compile Include="manejador\ManejarToken.cs" />
     <Compile Include="models\Biblioteca.cs" />
+    <Compile Include="models\Conjunto.cs" />
+    <Compile Include="models\ErrorGroup.cs" />
     <Compile Include="models\Token.cs" />
     <Compile Include="models\TokenGroup.cs" />
     <Compile Include="models\Trampa.cs" />

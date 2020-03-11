@@ -7,9 +7,9 @@ using System.Xml.Serialization;
 
 namespace Proyecto1_OLC1.models
 {
-    public class TokenGroup
+    public class ErrorGroup
     {
         [XmlElement]
-        public Token[] token { get; set; }
+        public Trampa[] error { get; set; }
     }
 }

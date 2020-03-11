@@ -37,6 +37,7 @@
             this.salieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.buttonAnalizar = new System.Windows.Forms.Button();
+            this.buttonReport = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,7 +107,8 @@
             // 
             // buttonAnalizar
             // 
-            this.buttonAnalizar.Location = new System.Drawing.Point(622, 65);
+            this.buttonAnalizar.Enabled = false;
+            this.buttonAnalizar.Location = new System.Drawing.Point(617, 129);
             this.buttonAnalizar.Name = "buttonAnalizar";
             this.buttonAnalizar.Size = new System.Drawing.Size(115, 47);
             this.buttonAnalizar.TabIndex = 3;
@@ -114,11 +116,23 @@
             this.buttonAnalizar.UseVisualStyleBackColor = true;
             this.buttonAnalizar.Click += new System.EventHandler(this.buttonAnalizar_Click);
             // 
+            // buttonReport
+            // 
+            this.buttonReport.Enabled = false;
+            this.buttonReport.Location = new System.Drawing.Point(617, 240);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(115, 47);
+            this.buttonReport.TabIndex = 4;
+            this.buttonReport.Text = "Ver Reporte";
+            this.buttonReport.UseVisualStyleBackColor = true;
+            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 469);
+            this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonAnalizar);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
@@ -142,6 +156,7 @@
         private System.Windows.Forms.ToolStripMenuItem salieToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button buttonAnalizar;
+        private System.Windows.Forms.Button buttonReport;
     }
 }
 
