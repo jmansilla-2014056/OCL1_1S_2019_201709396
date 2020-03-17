@@ -78,9 +78,6 @@ namespace Proyecto1_OLC1
             ManejarToken mt = new ManejarToken();
             mt.parser(listaTokens);
             reporteXml();
-            
-            
-
 
         }
 

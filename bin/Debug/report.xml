@@ -379,6 +379,13 @@
     <Columna>44</Columna>
   </token>
   <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>10</Fila>
+    <Columna>46</Columna>
+  </token>
+  <token>
     <Id>32</Id>
     <Lexema>er1</Lexema>
     <Tipo>Identificador</Tipo>
@@ -568,7 +575,7 @@
     <Columna>18</Columna>
   </token>
   <token>
-    <Id>59</Id>
+    <Id>0</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>23</Fila>

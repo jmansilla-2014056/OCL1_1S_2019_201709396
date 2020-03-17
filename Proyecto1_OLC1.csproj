@@ -53,13 +53,18 @@
     <Compile Include="Editor.Designer.cs">
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
+    <Compile Include="manejador\Generador.cs" />
     <Compile Include="manejador\ManejarToken.cs" />
+    <Compile Include="manejador\Thopmson.cs" />
+    <Compile Include="models\Automata.cs" />
     <Compile Include="models\Biblioteca.cs" />
     <Compile Include="models\Conjunto.cs" />
     <Compile Include="models\ErrorGroup.cs" />
+    <Compile Include="models\Estado.cs" />
     <Compile Include="models\Token.cs" />
     <Compile Include="models\TokenGroup.cs" />
     <Compile Include="models\Trampa.cs" />
+    <Compile Include="models\Transicion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextControl.cs">
