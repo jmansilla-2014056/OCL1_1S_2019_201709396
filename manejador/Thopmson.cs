@@ -7,23 +7,34 @@ using System.Threading.Tasks;
 
 namespace Proyecto1_OLC1.manejador
 {
-    class Thompson
+    public class Thompson
     {
         int i = 0;
         List<Token> er;
+
         String nameEr; //Nombre de la expresion regular
         Automata raiz; //Contendra el Automata Final (que sera una lista de transiciones)
+        Automata determinista;
         public Thompson(List<Token> er, string nameEr)
         {
             this.er = er;
             this.nameEr = nameEr;
             raiz = create();
+            raiz.createAlfabeto(er);
+            AFD Afd = new AFD(raiz);
+
+            Determinista = Afd.Determinista;
+        }
+
+        public void reportar()
+        {
             this.raiz.createAlfabeto(er);
             raiz.graficar(NameEr);
         }
 
         public string NameEr { get => nameEr; set => nameEr = value; }
         public Automata Raiz { get => raiz; set => raiz = value; }
+        public Automata Determinista { get => determinista; set => determinista = value; }
 
         public Automata create()
         {
@@ -67,7 +78,7 @@ namespace Proyecto1_OLC1.manejador
                     Automata AutomataCadena = afnSimple(er.ElementAt(i));
                     return AutomataCadena;
                     break;
-                case 32:
+                case 30:
                     Automata AutomataId = afnSimple(er.ElementAt(i));
                     return AutomataId;
                     break;
@@ -229,12 +240,19 @@ namespace Proyecto1_OLC1.manejador
             HashSet<Token> alfabeto = new HashSet<Token>();
             foreach(Token token in AFN1.Alfabeto)
             {
-                alfabeto.Add(token);
+                if(alfabeto.FirstOrDefault(x=> x.Id==token.Id && x.Lexema.Equals(token.Lexema)) == null)
+                {
+                    alfabeto.Add(token);
+                }
+                
             }
             
             foreach(Token token in AFN2.Alfabeto)
             {
-                alfabeto.Add(token);
+                if (alfabeto.FirstOrDefault(x => x.Id == token.Id && x.Lexema.Equals(token.Lexema)) == null)
+                {
+                    alfabeto.Add(token);
+                }
             }
             afn_union.Alfabeto = alfabeto;
             afn_union.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;

@@ -28,9 +28,14 @@ namespace Proyecto1_OLC1.models
         {
             foreach(Token t in tokens)
             {
-                if(t.Id == 31 || t.Id == 32 || t.Id == 999)
+                if(t.Id == 31 || t.Id == 30 )
                 {
-                    Alfabeto.Add(t);
+                    
+                    if(Alfabeto.LastOrDefault(x=> x.Id == t.Id && x.Lexema.Equals(t.Lexema)) == null)
+                    {
+                        Alfabeto.Add(t);
+                    }
+                    
                 }
             }
         }
@@ -49,7 +54,7 @@ namespace Proyecto1_OLC1.models
             texto += "\trankdir=LR;" + "\n";
 
             texto += "\tgraph [label=\"" + nombre + "\", labelloc=t, fontsize=20]; \n";
-            texto += "\tnode [shape=doublecircle, style = filled,color = mediumseagreen];";
+            texto += "\tnode [style = filled,color = mediumseagreen];";
 
             foreach(Estado e in this.Estados)
             {
@@ -61,18 +66,47 @@ namespace Proyecto1_OLC1.models
             texto += "\tnode [color=midnightblue,fontcolor=white];\n" + "	edge [color=red];" + "\n";
 
             texto += "\tsecret_node [style=invis];\n" + "	secret_node -> " + this.Inicial.Id + " [label=\"inicio\"];" + "\n";
-
-            foreach(Estado e in this.Estados)
+            List<string> duplicados = new List<string>();
+            List<Estado> filtroEstados = new List<Estado>();
+            List<Transicion> filtroTransiciones = new List<Transicion>();
+            Transicion transicion = new Transicion();
+            foreach (Estado e in this.Estados)
             {
+                Estado ee = e;             
                 List<Transicion> transiciones = e.Transiciones;
                 foreach(Transicion t in transiciones)
                 {
-                    texto += "\t" + t.dotString() + "\n";
+                    if(duplicados.Find(x => x.Equals(t.dotString())) == null)
+                    {
+                        transicion = t;
+                        filtroTransiciones.Add(t);
+                        duplicados.Add(t.dotString());
+                        texto += "\t" + t.dotString() + "\n";
+                    }
+                    
                 }
-                
+               
+                ee.Transiciones = filtroTransiciones;
+                filtroEstados.Add(ee);
+                filtroTransiciones = new List<Transicion>();
             }
-
+            foreach(Estado a in Aceptacion)
+            {
+                texto += a.Id + "[shape=doublecircle]";
+            }
+            
             texto += "}";
+            this.Estados = filtroEstados;
+
+            Console.WriteLine("--------------------------------------" + nombre + "------------------------");
+            foreach (Estado e in this.Estados)
+            {
+                List<Transicion> transiciones = e.Transiciones;
+                foreach (Transicion t in transiciones)
+                {
+                    Console.WriteLine(t.dotString());
+                }
+            }
 
             Generador g = new Generador();
             g.graficar(texto, nombre);

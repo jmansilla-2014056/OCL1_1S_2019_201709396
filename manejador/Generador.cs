@@ -44,9 +44,8 @@ namespace Proyecto1_OLC1.manejador
             //  rtImagen = rutaImagen;
             rtImagen = name + ".png";
             grafo.Append(contenido);
-            Console.WriteLine(contenido);
             this.generadorDot(name, "");
-
+            abrirGrafo();
         }
 
         public String abrirGrafo()

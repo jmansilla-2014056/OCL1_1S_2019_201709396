@@ -1,0 +1,10 @@
+digraph 19032020203236 {
+	rankdir=LR;
+	graph [label="19032020203236", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen]; 0;
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> 0 [label="inicio"];
+}

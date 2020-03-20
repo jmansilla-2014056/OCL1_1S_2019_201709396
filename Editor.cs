@@ -22,6 +22,7 @@ namespace Proyecto1_OLC1
         List<TextControl> listaEntrada = new List<TextControl>();
         List<Token> listaTokens = new List<Token>();
         List<Biblioteca> listaPalabras = new List<Biblioteca>();
+        ManejarToken mt;
         public static List<Trampa> listaErrores = new List<Trampa>();
 
         public Editor()
@@ -47,8 +48,7 @@ namespace Proyecto1_OLC1
         }
 
         private void reporteXml()
-        {
-            
+        {          
                 using (var sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\report.xml"))
                 {
                     if (!listaErrores.Any())
@@ -57,7 +57,8 @@ namespace Proyecto1_OLC1
                         tg.token = listaTokens.ToArray();
                         XmlSerializer serializer = new XmlSerializer(typeof(TokenGroup));
                         serializer.Serialize(sw, tg);
-
+                        Reportes reportes = new Reportes(mt.Thompsons);
+                        reportes.Show();
                     }
                     else
                     {
@@ -75,7 +76,7 @@ namespace Proyecto1_OLC1
         {
             limpieza();
             generador();
-            ManejarToken mt = new ManejarToken();
+            mt = new ManejarToken();
             mt.parser(listaTokens);
             reporteXml();
 
@@ -136,7 +137,8 @@ namespace Proyecto1_OLC1
                         break;
                     case '/':
                         contador = x;
-                        if(analizar[x + 1] == '/'){
+                        if(analizar[x + 1] == '/')
+                        {
                             try
                             {
                                 contador = contador + 2;
@@ -205,6 +207,37 @@ namespace Proyecto1_OLC1
                     case ';':
                         contador = x;
                         listaTokens.Add(new Token((int)analizar[x], ";", "Punto y coma", obtenerFila(contador), obtenerColumna(contador)));
+                        break;
+                    case '\\':
+                        contador = x;
+                        try {
+                            if (analizar[x + 1] == 'n')
+                            {
+                                contador++;
+                                listaTokens.Add(new Token((int)'\n', "\n", "Salto de linea", obtenerFila(contador), obtenerColumna(contador)));
+                            } else if (analizar[x + 1] == 't')
+                            {
+                                contador ++;
+                                listaTokens.Add(new Token((int)'\t', "\t", "Tabulacion", obtenerFila(contador), obtenerColumna(contador)));
+                            } else if (analizar[x + 1] == '\'')
+                            {
+                                contador++;
+                                listaTokens.Add(new Token((int)'\'', "'", "Comilla Simple", obtenerFila(contador), obtenerColumna(contador)));
+                            } else if (analizar[x + 1] == '"')
+                            {
+                                contador++;
+                                listaTokens.Add(new Token((int)'"', "\"", "Comilla doble", obtenerFila(contador), obtenerColumna(contador)));
+                            }
+                            else
+                            {
+                                listaTokens.Add(new Token((int)analizar[x], analizar[x].ToString(), "Simbolo", obtenerFila(contador), obtenerColumna(contador)));
+                            }
+                                x = contador;
+                        }catch(Exception p)
+                            {
+                            listaErrores.Add(new Trampa(concatenar, "Ocurrio un error", obtenerFila(contador - 1), obtenerColumna(contador - 1)));
+                            contador--;
+                        }
                         break;
                     case '0':
                     case '1':
@@ -314,7 +347,7 @@ namespace Proyecto1_OLC1
                     }
                     else
                     {
-                        listaTokens.Add(new Token(32, concatenar, "Identificador", obtenerFila(contador - 1), obtenerColumna(contador - 1)));
+                        listaTokens.Add(new Token(30, concatenar, "Identificador", obtenerFila(contador - 1), obtenerColumna(contador - 1)));
                     }
                     concatenar = "";
                     contador--;

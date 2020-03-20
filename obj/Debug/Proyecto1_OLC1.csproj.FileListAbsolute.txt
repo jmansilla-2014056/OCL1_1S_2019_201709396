@@ -9,3 +9,4 @@ C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.TextControl.resources
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.Editor.resources
 C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Proyecto1_OLC1\Proyecto1_OLC1\obj\Debug\Proyecto1_OLC1.Reportes.resources

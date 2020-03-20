@@ -1,7 +1,7 @@
 digraph er1 {
 	rankdir=LR;
 	graph [label="er1", labelloc=t, fontsize=20]; 
-	node [shape=doublecircle, style = filled,color = mediumseagreen]; 0 1 2 3 4 5 6 7 8 9 10 11 12 13;
+	node [style = filled,color = mediumseagreen]; 0 1 2 3 4 5 6 7 8 9 10 11 12 13;
 	node [shape=circle];
 	node [color=midnightblue,fontcolor=white];
 	edge [color=red];
@@ -24,4 +24,4 @@ digraph er1 {
 	11 -> 12 [label="ε"];
 	12 -> 3 [label="ε"];
 	12 -> 13 [label="ε"];
-}
+13[shape=doublecircle]}

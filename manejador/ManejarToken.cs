@@ -22,6 +22,8 @@ namespace Proyecto1_OLC1.manejador
         String nombreEr = "";
         String nombreConj = "";
 
+        internal List<Thompson> Thompsons { get => thompsons; set => thompsons = value; }
+
         public void parser(List<Token> lt)
         {
             listaTokens = lt;
@@ -32,7 +34,6 @@ namespace Proyecto1_OLC1.manejador
 
         public Token consumir()
         {
-           
                 x++;
                 if (x <= listaTokens.Count-1)
                 {
@@ -97,7 +98,7 @@ namespace Proyecto1_OLC1.manejador
             {
                 dosPuntos(consumir());
             }
-            else if (t.Id == 32)
+            else if (t.Id == 30)
             {
                 this.nombreEr = t.Lexema;
                 guionOrdosPuntos(consumir());
@@ -164,7 +165,7 @@ namespace Proyecto1_OLC1.manejador
         //despues de llaves se espera identificador
         void idConj(Token t)
         {
-            if(t.Id == 32)
+            if(t.Id == 30)
             {
                 filtro.Add(t);
                 llavesCerrar(consumir());
@@ -227,7 +228,7 @@ namespace Proyecto1_OLC1.manejador
         //Entran a 2 puntos se espera id
         void id(Token t)
         {
-            if (t.Id == 32)
+            if (t.Id == 30)
             {
                 this.nombreConj = t.Lexema;
                 guion(consumir());
@@ -270,7 +271,7 @@ namespace Proyecto1_OLC1.manejador
             caracter = t.Lexema[0];
             addChar(t);
             //Id
-            if (t.Id == 32)
+            if (t.Id == 30)
             {
                 VirOrComaOrPunto0(consumir());
             }
@@ -279,7 +280,7 @@ namespace Proyecto1_OLC1.manejador
             {
                 VirOrComaOrPunto1(consumir());
             }
-            else if (t.Id >= 33 && t.Id <= 125)
+            else if ((t.Id >= 32 && t.Id <= 125) || t.Id==9 || t.Id==10)
             //Simbolo
             {
                 VirOrComaOrPunto2(consumir());
@@ -424,7 +425,7 @@ namespace Proyecto1_OLC1.manejador
         void id1(Token t)
         {
             addChar(t);
-            if (t.Id == 32)
+            if (t.Id == 30)
             {
                 comaOrPunto0(consumir());
             }
@@ -437,7 +438,7 @@ namespace Proyecto1_OLC1.manejador
         void id2(Token t)
         {
             addRange(t);
-            if (t.Id == 32)
+            if (t.Id == 30)
             {
                 puntoYcoma(consumir());
             }
@@ -476,7 +477,7 @@ namespace Proyecto1_OLC1.manejador
         void symbol1(Token t)
         {
             addChar(t);
-            if (t.Id >= 33 && t.Id <= 125)
+            if ((t.Id >= 33 && t.Id <= 125) || t.Id == 32 || t.Id == 9 || t.Id == 10)
             {
                 comaOrPunto2(consumir());
             }
@@ -489,7 +490,7 @@ namespace Proyecto1_OLC1.manejador
         void symbol2(Token t)
         {
             addRange(t);
-            if (t.Id >= 33 && t.Id <= 125)
+            if ((t.Id >= 33 && t.Id <= 125) || t.Id == 32 || t.Id == 9 || t.Id == 10)
             {
                 puntoYcoma(consumir());
             }
