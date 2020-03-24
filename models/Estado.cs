@@ -8,18 +8,37 @@ namespace Proyecto1_OLC1.models
 {
     public class Estado
     {
-        private int id;
-        private List<Transicion<string>> transiciones;
+        private AFDEstado inicio;
+        private AFDEstado fin;
+        private Token simbolo;
 
-        public int Id { get => id; set => id = value; }
-        public List<Transicion<string>> Transiciones { get => transiciones; set => transiciones = value; }
+        public AFDEstado Inicio { get => inicio; set => inicio = value; }
+        public AFDEstado Fin { get => fin; set => fin = value; }
+        public Token Simbolo { get => simbolo; set => simbolo = value; }
+        
 
-        public Estado(int id)
+        public Estado(AFDEstado inicio, AFDEstado fin, Token simbolo)
         {
-            Id = id;
-            Transiciones = new List<Transicion<string>>();
+            Inicio = inicio;
+            Fin = fin;
+            Simbolo = simbolo;
+
         }
+        
+        public Estado()
+        {
+
+        }
+
+        public string toString()
+        {
+            return "(" + Inicio.NombreId + "-" + Simbolo + "-" + Fin.NombreId + ")";
+        }
+
+        public string dotString()
+        {
+            return (this.Inicio.NombreId + " -> " + this.Fin.NombreId + " [label=\"" + this.Simbolo.Lexema + "\"];");
+        }
+
     }
-
-
 }

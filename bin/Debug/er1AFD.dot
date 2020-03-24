@@ -1,0 +1,39 @@
+digraph er1AFD {
+	rankdir=LR;
+	graph [label="er1AFD", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen];
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+
+	A->B [label="letra"];
+
+	B->C [label="letra"];
+
+	B->D [label="digito"];
+
+	B->E [label="_"];
+
+	C->C [label="letra"];
+
+	C->D [label="digito"];
+
+	C->E [label="_"];
+
+	D->C [label="letra"];
+
+	D->D [label="digito"];
+
+	D->E [label="_"];
+
+	E->C [label="letra"];
+
+	E->D [label="digito"];
+
+	E->E [label="_"];
+
+	B[shape=doublecircle];
+	C[shape=doublecircle];
+	D[shape=doublecircle];
+	E[shape=doublecircle];
+ }

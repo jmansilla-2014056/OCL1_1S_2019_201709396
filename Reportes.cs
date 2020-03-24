@@ -16,12 +16,14 @@ namespace Proyecto1_OLC1
         List<Thompson> listathompsons = new List<Thompson>();
         public Reportes(List<Thompson> thompsons)
         {
+            this.comboER.Items.Clear();
             InitializeComponent();
             listathompsons = thompsons;
             foreach (Thompson t in thompsons)
             {
                 this.comboER.Items.Add(t.NameEr);
             }
+            
         }
 
         private void buttonG_Click(object sender, EventArgs e)
@@ -30,7 +32,15 @@ namespace Proyecto1_OLC1
             if (thompson != null)
             {
                 thompson.reportar();
-              //  thompson.Determinista.graficar("AFD_"+thompson.NameEr);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Thompson thompson = listathompsons.FindLast(x => x.NameEr.Equals(this.comboER.SelectedItem.ToString()));
+            if (thompson != null)
+            {
+                thompson.Deterministas.graficar(thompson.NameEr);
             }
         }
     }

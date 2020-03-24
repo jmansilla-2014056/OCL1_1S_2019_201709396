@@ -9,19 +9,20 @@ namespace Proyecto1_OLC1.manejador
 {
     public class Simulacion
     {
-        public HashSet<Estado> eClosure(Estado eClosureEstado)
+        public HashSet<AFDEstado> eClosure(AFDEstado eClosureEstado)
         {
-            Stack<Estado> pilaClosure = new Stack<Estado>();
-            Estado actual = eClosureEstado;
+
+            Stack<AFDEstado> pilaClosure = new Stack<AFDEstado>();
+            AFDEstado actual = eClosureEstado;
             
-            HashSet<Estado> resultado = new HashSet<Estado>();
+            HashSet<AFDEstado> resultado = new HashSet<AFDEstado>();
 
             pilaClosure.Push(actual);
             while (pilaClosure.Count>0)
             {
                 actual = pilaClosure.Pop();
 
-                foreach (Transicion t in actual.Transiciones)
+                foreach (Estado t in actual.Estados)
                 {
 
                     if (t.Simbolo.Id == 999 && !resultado.Contains(t.Fin))
@@ -36,23 +37,25 @@ namespace Proyecto1_OLC1.manejador
             return resultado;
         }
 
-        public HashSet<Estado> move(HashSet<Estado> estados, Token simbolo)
+        public HashSet<AFDEstado> move(HashSet<AFDEstado> estados, Token simbolo)
         {
-            HashSet<Estado> alcanzados = new HashSet<Estado>();
-            IEnumerator<Estado> iterator = estados.GetEnumerator();
+            Console.WriteLine("//////////////////////////////////////////////////");
+            HashSet<AFDEstado> alcanzados = new HashSet<AFDEstado>();
+            IEnumerator<AFDEstado> iterator = estados.GetEnumerator();
             while (iterator.MoveNext())
             {    
-                foreach (Transicion t in iterator.Current.Transiciones)
+                foreach (Estado t in iterator.Current.Estados)
                 {
-                    Estado siguiente = t.Fin;
+                    AFDEstado siguiente = t.Fin;
                     Token simb = t.Simbolo;
                     if(simb.Id == simbolo.Id && simb.Lexema.Equals(simbolo.Lexema))
-                    {
-                        if(alcanzados.FirstOrDefault(x=> x.Id == siguiente.Id) == null)
-                        {
+                    {                       
                             alcanzados.Add(siguiente);
-                        }
-                        
+                            Console.WriteLine("a0");                        
+                    }
+                    else
+                    {
+                            Console.WriteLine("a1");
                     }
                 }
             }

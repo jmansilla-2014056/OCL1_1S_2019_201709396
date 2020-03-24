@@ -32,4 +32,8 @@ digraph er2 {
 	20 -> 18 [label="ε"];
 	18 -> 19 [label="ε"];
 	18 -> 21 [label="ε"];
+	19 -> 20 [label="d"];
+	20 -> 19 [label="ε"];
+	20 -> 21 [label="ε"];
+	20 -> 18 [label="ε"];
 21[shape=doublecircle]}

@@ -14,16 +14,28 @@ namespace Proyecto1_OLC1.manejador
 
         String nameEr; //Nombre de la expresion regular
         Automata raiz; //Contendra el Automata Final (que sera una lista de transiciones)
-        Automata determinista;
+        Subconjuntos deterministas;
         public Thompson(List<Token> er, string nameEr)
         {
-            this.er = er;
+           
+            foreach(Token t in er)
+            {
+                t.Fila = 0;
+                t.Columna = 0;
+                t.Tipo = "";
+            }
+           
+            this.er = er;            
             this.nameEr = nameEr;
             raiz = create();
             raiz.createAlfabeto(er);
-            AFD Afd = new AFD(raiz);
+            raiz.obtenerAcpetacion();
+            //  AFNtoAFD Afd = new AFNtoAFD(raiz);
 
-            Determinista = Afd.Determinista;
+            //  Determinista = Afd.Determinista;
+            Subconjuntos s = new Subconjuntos(raiz);
+            this.Deterministas = s;
+            
         }
 
         public void reportar()
@@ -34,7 +46,7 @@ namespace Proyecto1_OLC1.manejador
 
         public string NameEr { get => nameEr; set => nameEr = value; }
         public Automata Raiz { get => raiz; set => raiz = value; }
-        public Automata Determinista { get => determinista; set => determinista = value; }
+        public Subconjuntos Deterministas { get => deterministas; set => deterministas = value; }
 
         public Automata create()
         {
@@ -96,37 +108,37 @@ namespace Proyecto1_OLC1.manejador
             Automata afn_kleene = new Automata();
 
             //se crea un nuevo estado inicial
-            Estado nuevoInicio = new Estado(0);
-            afn_kleene.Estados.Add(nuevoInicio);
+            AFDEstado nuevoInicio = new AFDEstado(0);
+            afn_kleene.AFDEstados.Add(nuevoInicio);
             afn_kleene.Inicial = nuevoInicio;
 
             //agregar todos los estados intermedio
-            for (int i = 0; i < automataFN.Estados.Count; i++)
+            for (int i = 0; i < automataFN.AFDEstados.Count; i++)
             {
-                Estado tmp = (Estado)automataFN.Estados.ElementAt(i);
-                tmp.Id = i + 1;
-                afn_kleene.Estados.Add(tmp);
+                AFDEstado tmp = (AFDEstado)automataFN.AFDEstados.ElementAt(i);
+                tmp.NombreId = i + 1;
+                afn_kleene.AFDEstados.Add(tmp);
             }
 
             //Se crea un nuevo estado de aceptacion
-            Estado nuevoFin = new Estado(automataFN.Estados.Count + 1);
-            afn_kleene.Estados.Add(nuevoFin);
+            AFDEstado nuevoFin = new AFDEstado(automataFN.AFDEstados.Count + 1);
+            afn_kleene.AFDEstados.Add(nuevoFin);
             afn_kleene.Aceptacion.Add(nuevoFin);
 
             //definir estados clave para realizar la cerraduras
-            Estado anteriorInicio = automataFN.Inicial;
+            AFDEstado anteriorInicio = automataFN.Inicial;
 
-            List<Estado> anteriorFin = automataFN.Aceptacion;
+            List<AFDEstado> anteriorFin = automataFN.Aceptacion;
 
             // agregar transiciones desde el nuevo estado inicial
-            nuevoInicio.Transiciones.Add(new Transicion(nuevoInicio, anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
-            nuevoInicio.Transiciones.Add(new Transicion(nuevoInicio, nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
+            nuevoInicio.Estados.Add(new Estado(nuevoInicio, anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
+            nuevoInicio.Estados.Add(new Estado(nuevoInicio, nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
 
             // agregar transiciones desde el anterior estado final
             for (int i = 0; i < anteriorFin.Count; i++)
             {
-                anteriorFin.ElementAt(i).Transiciones.Add(new Transicion(anteriorFin.ElementAt(i), anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
-                anteriorFin.ElementAt(i).Transiciones.Add(new Transicion(anteriorFin.ElementAt(i), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
+                anteriorFin.ElementAt(i).Estados.Add(new Estado(anteriorFin.ElementAt(i), anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
+                anteriorFin.ElementAt(i).Estados.Add(new Estado(anteriorFin.ElementAt(i), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
             }
             afn_kleene.Alfabeto = automataFN.Alfabeto;
             afn_kleene.LenguajeR = automataFN.LenguajeR;
@@ -141,37 +153,37 @@ namespace Proyecto1_OLC1.manejador
             //se utiliza como contador para los estados del nuevo automata
             int i = 0;
             //agregar los estados del primer automata
-            for (i = 0; i < AFN2.Estados.Count; i++)
+            for (i = 0; i < AFN2.AFDEstados.Count; i++)
             {
-                Estado tmp = (Estado)AFN2.Estados.ElementAt(i);
-                tmp.Id = i;
+                AFDEstado tmp = (AFDEstado)AFN2.AFDEstados.ElementAt(i);
+                tmp.NombreId = i;
                 //se define el estado inicial
                 if (i == 0)
                 {
                     afn_concat.Inicial = tmp ;
                 }
                 //cuando llega al último, concatena el ultimo con el primero del otro automata con un epsilon
-                if (i == AFN2.Estados.Count - 1)
+                if (i == AFN2.AFDEstados.Count - 1)
                 {
                     //se utiliza un ciclo porque los estados de aceptacion son un array
                     for (int k = 0; k < AFN2.Aceptacion.Count; k++)
                     {
-                        tmp.Transiciones.Add(new Transicion((Estado)AFN2.Aceptacion.ElementAt(k), AFN1.Inicial, new Token(999, "ε", "Epsilon", 0, 0)));
+                        tmp.Estados.Add(new Estado((AFDEstado)AFN2.Aceptacion.ElementAt(k), AFN1.Inicial, new Token(999, "ε", "Epsilon", 0, 0)));
                     }
                 }
-                afn_concat.Estados.Add(tmp);
+                afn_concat.AFDEstados.Add(tmp);
 
             }
             //termina de agregar los estados y transiciones del segundo automata
-            for (int j = 0; j < AFN1.Estados.Count; j++)
+            for (int j = 0; j < AFN1.AFDEstados.Count; j++)
             {
-                Estado tmp = (Estado)AFN1.Estados.ElementAt(j);
-                tmp.Id = i;
+                AFDEstado tmp = (AFDEstado)AFN1.AFDEstados.ElementAt(j);
+                tmp.NombreId = i;
 
                 //define el ultimo con estado de aceptacion
-                if (AFN1.Estados.Count - 1 == j)
+                if (AFN1.AFDEstados.Count - 1 == j)
                     afn_concat.Aceptacion.Add(tmp);
-                afn_concat.Estados.Add(tmp);
+                afn_concat.AFDEstados.Add(tmp);
                 i++;
             }
 
@@ -195,47 +207,47 @@ namespace Proyecto1_OLC1.manejador
         {
             Automata afn_union = new Automata();
             //se crea un nuevo estado inicial
-            Estado nuevoInicio = new Estado(0);
+            AFDEstado nuevoInicio = new AFDEstado(0);
             //se crea una transicion del nuevo estado inicial al primer automata
-            nuevoInicio.Transiciones.Add(new Transicion(nuevoInicio, AFN2.Inicial, new Token(999, "ε","Epsilon",0,0)));
+            nuevoInicio.Estados.Add(new Estado(nuevoInicio, AFN2.Inicial, new Token(999, "ε","Epsilon",0,0)));
 
-            afn_union.Estados.Add(nuevoInicio);
+            afn_union.AFDEstados.Add(nuevoInicio);
             afn_union.Inicial = nuevoInicio;
             int i = 0;//llevar el contador del identificador de estados
                       //agregar los estados del segundo automata
-            for (i = 0; i < AFN1.Estados.Count; i++)
+            for (i = 0; i < AFN1.AFDEstados.Count; i++)
             {
-                Estado tmp = (Estado)AFN1.Estados.ElementAt(i);
-                tmp.Id = (i + 1);
-                afn_union.Estados.Add(tmp);
+                AFDEstado tmp = (AFDEstado)AFN1.AFDEstados.ElementAt(i);
+                tmp.NombreId = (i + 1);
+                afn_union.AFDEstados.Add(tmp);
             }
             //agregar los estados del primer automata
-            for (int j = 0; j < AFN2.Estados.Count; j++)
+            for (int j = 0; j < AFN2.AFDEstados.Count; j++)
             {
-                Estado tmp = (Estado)AFN2.Estados.ElementAt(j);
-                tmp.Id = (i + 1);
-                afn_union.Estados.Add(tmp);
+                AFDEstado tmp = (AFDEstado)AFN2.AFDEstados.ElementAt(j);
+                tmp.NombreId = (i + 1);
+                afn_union.AFDEstados.Add(tmp);
                 i++;
             }
 
             //se crea un nuevo estado final
-            Estado nuevoFin = new Estado(AFN1.Estados.Count + AFN2.Estados.Count + 1);
-            afn_union.Estados.Add(nuevoFin);
+            AFDEstado nuevoFin = new AFDEstado(AFN1.AFDEstados.Count + AFN2.AFDEstados.Count + 1);
+            afn_union.AFDEstados.Add(nuevoFin);
             afn_union.Aceptacion.Add(nuevoFin);
 
-            Estado anteriorInicio = AFN1.Inicial;
-            List<Estado> anteriorFin = AFN1.Aceptacion;
-            List<Estado> anteriorFin2 = AFN2.Aceptacion;
+            AFDEstado anteriorInicio = AFN1.Inicial;
+            List<AFDEstado> anteriorFin = AFN1.Aceptacion;
+            List<AFDEstado> anteriorFin2 = AFN2.Aceptacion;    
 
             // agregar transiciones desde el nuevo estado inicial
-            nuevoInicio.Transiciones.Add(new Transicion(nuevoInicio, anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
+            nuevoInicio.Estados.Add(new Estado(nuevoInicio, anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
 
             // agregar transiciones desde el anterior AFN 1 al estado final
             for (int k = 0; k < anteriorFin.Count; k++)
-                anteriorFin.ElementAt(k).Transiciones.Add(new Transicion(anteriorFin.ElementAt(k),nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
+                anteriorFin.ElementAt(k).Estados.Add(new Estado(anteriorFin.ElementAt(k),nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
             // agregar transiciones desde el anterior AFN 2 al estado final
             for (int k = 0; k < anteriorFin.Count; k++)
-                anteriorFin2.ElementAt(k).Transiciones.Add(new Transicion(anteriorFin2.ElementAt(k), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
+                anteriorFin2.ElementAt(k).Estados.Add(new Estado(anteriorFin2.ElementAt(k), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
 
             HashSet<Token> alfabeto = new HashSet<Token>();
             foreach(Token token in AFN1.Alfabeto)
@@ -257,6 +269,7 @@ namespace Proyecto1_OLC1.manejador
             afn_union.Alfabeto = alfabeto;
             afn_union.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;
             afn_union.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;
+           
             return afn_union;
         }
 
@@ -265,14 +278,14 @@ namespace Proyecto1_OLC1.manejador
         {
             Automata automataFN = new Automata();
             //definir los nuevos estados
-            Estado inicial = new Estado(0);
-            Estado aceptacion = new Estado(1);
+            AFDEstado inicial = new AFDEstado(0);
+            AFDEstado aceptacion = new AFDEstado(1);
             //crear una transicion unica con el simbolo
-            Transicion tran = new Transicion(inicial, aceptacion, simboloRegex);
-            inicial.Transiciones.Add(tran);
+            Estado tran = new Estado(inicial, aceptacion, simboloRegex);
+            inicial.Estados.Add(tran);
             //agrega los estados creados
-            automataFN.Estados.Add(inicial);
-            automataFN.Estados.Add(aceptacion);
+            automataFN.AFDEstados.Add(inicial);
+            automataFN.AFDEstados.Add(aceptacion);
             //colocar los estados iniciales y de acpetacion
             automataFN.Inicial = inicial;
             automataFN.Aceptacion.Add(aceptacion);

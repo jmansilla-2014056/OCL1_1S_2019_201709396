@@ -9,17 +9,17 @@ namespace Proyecto1_OLC1.models
 {
     public class Automata
     {
-        private Estado inicial;
-        private List<Estado> aceptacion;
-        private List<Estado> estados;
+        private AFDEstado inicial;
+        private List<AFDEstado> aceptacion;
+        private List<AFDEstado> estados;
 
         private HashSet<Token> alfabeto;
         private String[] resultadoRegex;
         private String lenguajeR;
 
-        public Estado Inicial { get => inicial; set => inicial = value; }
-        public List<Estado> Aceptacion { get => aceptacion; set => aceptacion = value; }
-        public List<Estado> Estados { get => estados; set => estados = value; }
+        public AFDEstado Inicial { get => inicial; set => inicial = value; }
+        public List<AFDEstado> Aceptacion { get => aceptacion; set => aceptacion = value; }
+        public List<AFDEstado> AFDEstados { get => estados; set => estados = value; }
         public HashSet<Token> Alfabeto { get => alfabeto; set => alfabeto = value; }
         public string[] ResultadoRegex { get => resultadoRegex; set => resultadoRegex = value; }
         public string LenguajeR { get => lenguajeR; set => lenguajeR = value; }
@@ -42,10 +42,26 @@ namespace Proyecto1_OLC1.models
 
         public Automata()
         {
-            Estados = new List<Estado>();
-            aceptacion = new List<Estado>();
+            AFDEstados = new List<AFDEstado>();
+            aceptacion = new List<AFDEstado>();
             Alfabeto = new HashSet<Token>();
             ResultadoRegex = new string[3];
+        }
+
+        public void obtenerAcpetacion()
+        {
+            foreach (AFDEstado a in Aceptacion)
+            {
+                foreach(AFDEstado b in AFDEstados)
+                {
+                    if(a.NombreId == b.NombreId)
+                    {
+                        b.final = true;
+                    }
+
+                }
+
+            }
         }
 
         public void graficar(string nombre)
@@ -56,53 +72,41 @@ namespace Proyecto1_OLC1.models
             texto += "\tgraph [label=\"" + nombre + "\", labelloc=t, fontsize=20]; \n";
             texto += "\tnode [style = filled,color = mediumseagreen];";
 
-            foreach(Estado e in this.Estados)
+            foreach(AFDEstado e in this.AFDEstados)
             {
-                texto += " " + e.Id;
+                texto += " " + e.NombreId;
             }
 
             texto += ";" + "\n";
             texto += "\tnode [shape=circle];" + "\n";
             texto += "\tnode [color=midnightblue,fontcolor=white];\n" + "	edge [color=red];" + "\n";
 
-            texto += "\tsecret_node [style=invis];\n" + "	secret_node -> " + this.Inicial.Id + " [label=\"inicio\"];" + "\n";
-            List<string> duplicados = new List<string>();
-            List<Estado> filtroEstados = new List<Estado>();
-            List<Transicion> filtroTransiciones = new List<Transicion>();
-            Transicion transicion = new Transicion();
-            foreach (Estado e in this.Estados)
-            {
-                Estado ee = e;             
-                List<Transicion> transiciones = e.Transiciones;
-                foreach(Transicion t in transiciones)
-                {
-                    if(duplicados.Find(x => x.Equals(t.dotString())) == null)
-                    {
+            texto += "\tsecret_node [style=invis];\n" + "	secret_node -> " + this.Inicial.NombreId + " [label=\"inicio\"];" + "\n";
+
+            Estado transicion = new Estado();
+            foreach (AFDEstado e in this.AFDEstados)
+            {        
+                List<Estado> transiciones = e.Estados;
+                foreach(Estado t in transiciones)
+                {                   
                         transicion = t;
-                        filtroTransiciones.Add(t);
-                        duplicados.Add(t.dotString());
-                        texto += "\t" + t.dotString() + "\n";
-                    }
-                    
+                        texto += "\t" + t.dotString() + "\n";                         
                 }
-               
-                ee.Transiciones = filtroTransiciones;
-                filtroEstados.Add(ee);
-                filtroTransiciones = new List<Transicion>();
+                             
             }
-            foreach(Estado a in Aceptacion)
+            foreach(AFDEstado a in Aceptacion)
             {
-                texto += a.Id + "[shape=doublecircle]";
+                texto += a.NombreId + "[shape=doublecircle]";
             }
             
             texto += "}";
-            this.Estados = filtroEstados;
+           // this.Estados = filtroEstados;
 
             Console.WriteLine("--------------------------------------" + nombre + "------------------------");
-            foreach (Estado e in this.Estados)
+            foreach (AFDEstado e in this.AFDEstados)
             {
-                List<Transicion> transiciones = e.Transiciones;
-                foreach (Transicion t in transiciones)
+                List<Estado> transiciones = e.Estados;
+                foreach (Estado t in transiciones)
                 {
                     Console.WriteLine(t.dotString());
                 }

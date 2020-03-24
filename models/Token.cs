@@ -29,7 +29,7 @@ namespace Proyecto1_OLC1.models
         public Token(){
 
             }
-
+        
         public int Id { get => id; set => id = value; }
         public string Lexema { get => lexema; set => lexema = value; }
         public string Tipo { get => tipo; set => tipo = value; }
