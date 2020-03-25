@@ -5,6 +5,8 @@ digraph er1AFD {
 	node [shape=circle];
 	node [color=midnightblue,fontcolor=white];
 	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> A [label="inicio"];
 
 	A->B [label="letra"];
 
@@ -12,25 +14,29 @@ digraph er1AFD {
 
 	B->D [label="digito"];
 
-	B->E [label="_"];
+	B->E [label="
+"];
 
 	C->C [label="letra"];
 
 	C->D [label="digito"];
 
-	C->E [label="_"];
+	C->E [label="
+"];
 
 	D->C [label="letra"];
 
 	D->D [label="digito"];
 
-	D->E [label="_"];
+	D->E [label="
+"];
 
 	E->C [label="letra"];
 
 	E->D [label="digito"];
 
-	E->E [label="_"];
+	E->E [label="
+"];
 
 	B[shape=doublecircle];
 	C[shape=doublecircle];

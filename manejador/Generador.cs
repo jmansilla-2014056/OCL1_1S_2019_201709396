@@ -36,7 +36,7 @@ namespace Proyecto1_OLC1.manejador
             //     proc.WaitForExit();       
         }
         //contenido contiene las lineas
-        public void graficar(String contenido, String name)
+        public String graficar(String contenido, String name)
         {
             grafo = new StringBuilder();
             //   String rutaDot = "\\"+name+".dot";
@@ -45,7 +45,7 @@ namespace Proyecto1_OLC1.manejador
             rtImagen = name + ".png";
             grafo.Append(contenido);
             this.generadorDot(name, "");
-            abrirGrafo();
+            return abrirGrafo();
         }
 
         public String abrirGrafo()
@@ -54,7 +54,7 @@ namespace Proyecto1_OLC1.manejador
             {
                 try
                 {
-                    System.Diagnostics.Process.Start(this.rtImagen); //Hace que la imagen se abra
+                  //  System.Diagnostics.Process.Start(this.rtImagen); //Hace que la imagen se abra
                     return this.rtImagen;
                 }
                 catch (Exception ex)

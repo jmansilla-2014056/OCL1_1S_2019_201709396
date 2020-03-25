@@ -11,12 +11,12 @@ namespace Proyecto1_OLC1.manejador
     class ManejarToken
     {
         List<Token> listaTokens = new List<Token>();
-        List<Conjunto> listaConjuntos = new List<Conjunto>();
+        public List<Conjunto> listaConjuntos = new List<Conjunto>();
         List<Token> filtro = new List<Token>();
+        public static List<Validar> validaciones = new List<Validar>();
         List<Thompson> thompsons = new List<Thompson>();
         Conjunto conj = new Conjunto();
         
-
         char caracter = new Char();
         int x = -1;
         String nombreEr = "";
@@ -26,9 +26,9 @@ namespace Proyecto1_OLC1.manejador
 
         public void parser(List<Token> lt)
         {
+            ManejarToken.validaciones = new List<Validar>();
             listaTokens = lt;
             conjOrID(consumir());
-
 
         }
 
@@ -150,7 +150,7 @@ namespace Proyecto1_OLC1.manejador
                 idConj(consumir());
             }else if (t.Id == 59)
             {
-                Thompson thompson = new Thompson(filtro,nombreEr);
+                Thompson thompson = new Thompson(filtro,nombreEr, listaConjuntos);
                 thompsons.Add(thompson);
                 nombreEr = "";
                 filtro = new List<Token>();
@@ -192,6 +192,7 @@ namespace Proyecto1_OLC1.manejador
         {
             if(t.Id == 31)
             {
+                ManejarToken.validaciones.Add(new Validar(nombreEr, t.Lexema));
                 puntoComa(consumir());
             }
             else
@@ -270,6 +271,8 @@ namespace Proyecto1_OLC1.manejador
         {
             caracter = t.Lexema[0];
             addChar(t);
+
+
             //Id
             if (t.Id == 30)
             {
@@ -283,13 +286,91 @@ namespace Proyecto1_OLC1.manejador
             else if ((t.Id >= 32 && t.Id <= 125) || t.Id==9 || t.Id==10)
             //Simbolo
             {
-                VirOrComaOrPunto2(consumir());
+                if (t.Id == 91)
+                {
+                    Corchete(consumir());
+                }
+                else
+                {
+                    VirOrComaOrPunto2(consumir());
+                }
+                
             }
             else
             {
                 Editor.AddError(t, "Se esperaban id o numero o simbolos validos");
             }
 
+        }
+
+        void PuntosCierre(Token t)
+        {
+            if(t.Id == 58)
+            {
+                cierreCorchete(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "se esperaba :");
+            }
+        }
+
+        void cierreCorchete(Token t)
+        {
+            if(t.Id == 93)
+            {
+                puntoComa(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "se esperaba ]");
+            }
+        }
+
+        void idTodo(Token t)
+        {
+            //Si entra en id se forma el conjunto
+            if(t.Id == 30)
+            {
+                Conjunto nuevo = new Conjunto();
+                nuevo.NombreConjunto = this.nombreConj;
+                nuevo.Caracteres = t.Lexema.ToCharArray().ToList();
+                this.listaConjuntos.Add(nuevo);
+                PuntosCierre(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "se espera identificador");
+            }
+        }
+
+        //Entra en corchete pueden se espera 2 puntos o coma o virgulilla o punto y coma
+        void Corchete(Token t)
+        {
+            //viene dos puntos
+            if (t.Id == 58)
+            {
+                idTodo(consumir());
+            }
+            // viene ;?
+            else if (t.Id == 59)
+            {
+                finalConj();
+            }
+            //Viene ,?  
+            else if (t.Id == 44)
+            {
+                id1(consumir());
+            }
+            //Viene ~?
+            else if (t.Id == 126)
+            {
+                id2(consumir());
+            }
+            else
+            {
+                Editor.AddError(t, "se espera 2 puntos o coma o virgulilla o punto y coma");
+            }
         }
 
         //Entra en Id se espeta coma o virgulilla o punto y coma
@@ -312,7 +393,7 @@ namespace Proyecto1_OLC1.manejador
             }
             else
             {
-                Editor.AddError(t, "Se esperaban >");
+                Editor.AddError(t, "espera coma o virgulilla o punto y coma");
             }
         }
 
@@ -338,7 +419,7 @@ namespace Proyecto1_OLC1.manejador
             }
             else
             {
-                Editor.AddError(t, "Se esperaban >");
+                Editor.AddError(t, "espera virgulilla o otro numero o punto y coma");
             }
         }     
        
@@ -362,7 +443,7 @@ namespace Proyecto1_OLC1.manejador
             }
             else
             {
-                Editor.AddError(t, "Se esperaban >");
+                Editor.AddError(t, "se espera punto y coma o coma o virgulilla");
             }
         }
        

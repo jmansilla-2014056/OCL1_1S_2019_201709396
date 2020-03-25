@@ -64,7 +64,7 @@ namespace Proyecto1_OLC1.models
             }
         }
 
-        public void graficar(string nombre)
+        public String graficar(string nombre)
         {
             string texto = "digraph " + nombre +" {\n";
             texto += "\trankdir=LR;" + "\n";
@@ -113,7 +113,7 @@ namespace Proyecto1_OLC1.models
             }
 
             Generador g = new Generador();
-            g.graficar(texto, nombre);
+            return g.graficar(texto, nombre);
 
         }
 

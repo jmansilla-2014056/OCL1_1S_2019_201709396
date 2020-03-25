@@ -256,7 +256,7 @@ namespace Proyecto1_OLC1.manejador
 
         }
 
-        public void graficar(string nombre)
+        public String graficar(string nombre)
         {
             nombre = nombre + "AFD";
             string texto = "digraph " + nombre + " {\n";
@@ -267,6 +267,7 @@ namespace Proyecto1_OLC1.manejador
             texto += "\n";
             texto += "\tnode [shape=circle];" + "\n";
             texto += "\tnode [color=midnightblue,fontcolor=white];\n" + "	edge [color=red];" + "\n";
+            texto += "\tsecret_node [style=invis];\n" + "	secret_node -> " + "A" + " [label=\"inicio\"];" + "\n";
 
             for (int i = 0; i < DescripcionDelAFD.Count; i++)
             {
@@ -287,7 +288,7 @@ namespace Proyecto1_OLC1.manejador
 
             texto += "\n }";
             Generador g = new Generador();
-            g.graficar(texto, nombre);
+            return g.graficar(texto, nombre);
 
         }
 

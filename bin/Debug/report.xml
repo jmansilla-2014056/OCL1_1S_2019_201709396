@@ -4,281 +4,337 @@
     <Id>1</Id>
     <Lexema>CONJ</Lexema>
     <Tipo>Palabra Reservada</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
     <Lexema>:</Lexema>
     <Tipo>Dos Puntos</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>4</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>digito</Lexema>
+    <Lexema>letras</Lexema>
     <Tipo>Identificador</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>11</Columna>
   </token>
   <token>
     <Id>45</Id>
     <Lexema>-</Lexema>
     <Tipo>Menos</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>13</Columna>
   </token>
   <token>
     <Id>62</Id>
     <Lexema>&gt;</Lexema>
     <Tipo>Mayor</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>14</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>1</Lexema>
-    <Tipo>Numero</Tipo>
-    <Fila>1</Fila>
+    <Lexema>a</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>8</Fila>
     <Columna>16</Columna>
   </token>
   <token>
     <Id>126</Id>
     <Lexema>~</Lexema>
     <Tipo>Virgulilla</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>17</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>9</Lexema>
-    <Tipo>Numero</Tipo>
-    <Fila>1</Fila>
+    <Lexema>f</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>8</Fila>
     <Columna>18</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
-    <Fila>1</Fila>
+    <Fila>8</Fila>
     <Columna>19</Columna>
   </token>
   <token>
     <Id>1</Id>
     <Lexema>CONJ</Lexema>
     <Tipo>Palabra Reservada</Tipo>
-    <Fila>2</Fila>
+    <Fila>9</Fila>
     <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
     <Lexema>:</Lexema>
     <Tipo>Dos Puntos</Tipo>
-    <Fila>2</Fila>
+    <Fila>9</Fila>
     <Columna>4</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>letra</Lexema>
+    <Lexema>LETRAS</Lexema>
     <Tipo>Identificador</Tipo>
-    <Fila>2</Fila>
-    <Columna>10</Columna>
+    <Fila>9</Fila>
+    <Columna>11</Columna>
   </token>
   <token>
     <Id>45</Id>
     <Lexema>-</Lexema>
     <Tipo>Menos</Tipo>
-    <Fila>2</Fila>
-    <Columna>12</Columna>
+    <Fila>9</Fila>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>62</Id>
     <Lexema>&gt;</Lexema>
     <Tipo>Mayor</Tipo>
-    <Fila>2</Fila>
-    <Columna>13</Columna>
+    <Fila>9</Fila>
+    <Columna>14</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>a</Lexema>
+    <Lexema>A</Lexema>
     <Tipo>Identificador</Tipo>
-    <Fila>2</Fila>
-    <Columna>15</Columna>
+    <Fila>9</Fila>
+    <Columna>16</Columna>
   </token>
   <token>
     <Id>126</Id>
     <Lexema>~</Lexema>
     <Tipo>Virgulilla</Tipo>
-    <Fila>2</Fila>
-    <Columna>16</Columna>
+    <Fila>9</Fila>
+    <Columna>17</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>z</Lexema>
+    <Lexema>F</Lexema>
     <Tipo>Identificador</Tipo>
-    <Fila>2</Fila>
-    <Columna>17</Columna>
+    <Fila>9</Fila>
+    <Columna>18</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
-    <Fila>2</Fila>
-    <Columna>18</Columna>
-  </token>
-  <token>
-    <Id>30</Id>
-    <Lexema>er1</Lexema>
-    <Tipo>Identificador</Tipo>
-    <Fila>9</Fila>
-    <Columna>2</Columna>
-  </token>
-  <token>
-    <Id>45</Id>
-    <Lexema>-</Lexema>
-    <Tipo>Menos</Tipo>
-    <Fila>9</Fila>
-    <Columna>4</Columna>
-  </token>
-  <token>
-    <Id>62</Id>
-    <Lexema>&gt;</Lexema>
-    <Tipo>Mayor</Tipo>
-    <Fila>9</Fila>
-    <Columna>5</Columna>
-  </token>
-  <token>
-    <Id>46</Id>
-    <Lexema>.</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>123</Id>
-    <Lexema>{</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
-    <Fila>9</Fila>
-    <Columna>9</Columna>
-  </token>
-  <token>
-    <Id>30</Id>
-    <Lexema>letra</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>125</Id>
-    <Lexema>}</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
-    <Fila>9</Fila>
-    <Columna>15</Columna>
-  </token>
-  <token>
-    <Id>42</Id>
-    <Lexema>*</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>124</Id>
-    <Lexema>|</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>123</Id>
-    <Lexema>{</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
     <Fila>9</Fila>
     <Columna>19</Columna>
   </token>
   <token>
-    <Id>30</Id>
-    <Lexema>letra</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
+    <Id>1</Id>
+    <Lexema>CONJ</Lexema>
+    <Tipo>Palabra Reservada</Tipo>
+    <Fila>10</Fila>
+    <Columna>3</Columna>
   </token>
   <token>
-    <Id>125</Id>
-    <Lexema>}</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
-    <Fila>9</Fila>
-    <Columna>25</Columna>
-  </token>
-  <token>
-    <Id>124</Id>
-    <Lexema>|</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>123</Id>
-    <Lexema>{</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
-    <Fila>9</Fila>
-    <Columna>30</Columna>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>10</Fila>
+    <Columna>4</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>digito</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>125</Id>
-    <Lexema>}</Lexema>
-    <Tipo>Abrir Llaves</Tipo>
-    <Fila>9</Fila>
-    <Columna>37</Columna>
-  </token>
-  <token>
-    <Id>31</Id>
-    <Lexema>_</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>59</Id>
-    <Lexema>;</Lexema>
-    <Tipo>Punto y coma</Tipo>
-    <Fila>9</Fila>
-    <Columna>42</Columna>
-  </token>
-  <token>
-    <Id>30</Id>
-    <Lexema>er2</Lexema>
+    <Lexema>digitos</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>10</Fila>
-    <Columna>2</Columna>
+    <Columna>12</Columna>
   </token>
   <token>
     <Id>45</Id>
     <Lexema>-</Lexema>
     <Tipo>Menos</Tipo>
     <Fila>10</Fila>
-    <Columna>4</Columna>
+    <Columna>14</Columna>
   </token>
   <token>
     <Id>62</Id>
     <Lexema>&gt;</Lexema>
     <Tipo>Mayor</Tipo>
     <Fila>10</Fila>
+    <Columna>15</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>0</Lexema>
+    <Tipo>Numero</Tipo>
+    <Fila>10</Fila>
+    <Columna>17</Columna>
+  </token>
+  <token>
+    <Id>126</Id>
+    <Lexema>~</Lexema>
+    <Tipo>Virgulilla</Tipo>
+    <Fila>10</Fila>
+    <Columna>18</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>9</Lexema>
+    <Tipo>Numero</Tipo>
+    <Fila>10</Fila>
+    <Columna>19</Columna>
+  </token>
+  <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>10</Fila>
+    <Columna>20</Columna>
+  </token>
+  <token>
+    <Id>1</Id>
+    <Lexema>CONJ</Lexema>
+    <Tipo>Palabra Reservada</Tipo>
+    <Fila>11</Fila>
+    <Columna>3</Columna>
+  </token>
+  <token>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>11</Fila>
+    <Columna>4</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>todo</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>11</Fila>
+    <Columna>9</Columna>
+  </token>
+  <token>
+    <Id>45</Id>
+    <Lexema>-</Lexema>
+    <Tipo>Menos</Tipo>
+    <Fila>11</Fila>
+    <Columna>11</Columna>
+  </token>
+  <token>
+    <Id>62</Id>
+    <Lexema>&gt;</Lexema>
+    <Tipo>Mayor</Tipo>
+    <Fila>11</Fila>
+    <Columna>12</Columna>
+  </token>
+  <token>
+    <Id>91</Id>
+    <Lexema>[</Lexema>
+    <Tipo>Simbolo</Tipo>
+    <Fila>11</Fila>
+    <Columna>14</Columna>
+  </token>
+  <token>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>11</Fila>
+    <Columna>15</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>ABDEFGHIJKLMNOPQTUVWZ</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>11</Fila>
+    <Columna>36</Columna>
+  </token>
+  <token>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>11</Fila>
+    <Columna>37</Columna>
+  </token>
+  <token>
+    <Id>93</Id>
+    <Lexema>]</Lexema>
+    <Tipo>Simbolo</Tipo>
+    <Fila>11</Fila>
+    <Columna>38</Columna>
+  </token>
+  <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>11</Fila>
+    <Columna>39</Columna>
+  </token>
+  <token>
+    <Id>1</Id>
+    <Lexema>CONJ</Lexema>
+    <Tipo>Palabra Reservada</Tipo>
+    <Fila>12</Fila>
+    <Columna>3</Columna>
+  </token>
+  <token>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>12</Fila>
+    <Columna>4</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>sd</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>12</Fila>
+    <Columna>7</Columna>
+  </token>
+  <token>
+    <Id>45</Id>
+    <Lexema>-</Lexema>
+    <Tipo>Menos</Tipo>
+    <Fila>12</Fila>
+    <Columna>9</Columna>
+  </token>
+  <token>
+    <Id>62</Id>
+    <Lexema>&gt;</Lexema>
+    <Tipo>Mayor</Tipo>
+    <Fila>12</Fila>
+    <Columna>10</Columna>
+  </token>
+  <token>
+    <Id>9</Id>
+    <Lexema>	</Lexema>
+    <Tipo>Tabulacion</Tipo>
+    <Fila>12</Fila>
+    <Columna>13</Columna>
+  </token>
+  <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>12</Fila>
+    <Columna>14</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>EXP1</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>14</Fila>
+    <Columna>3</Columna>
+  </token>
+  <token>
+    <Id>45</Id>
+    <Lexema>-</Lexema>
+    <Tipo>Menos</Tipo>
+    <Fila>14</Fila>
     <Columna>5</Columna>
   </token>
   <token>
-    <Id>46</Id>
-    <Lexema>.</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
+    <Id>62</Id>
+    <Lexema>&gt;</Lexema>
+    <Tipo>Mayor</Tipo>
+    <Fila>14</Fila>
+    <Columna>6</Columna>
   </token>
   <token>
     <Id>46</Id>
@@ -288,8 +344,8 @@
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>46</Id>
-    <Lexema>.</Lexema>
+    <Id>31</Id>
+    <Lexema>#</Lexema>
     <Tipo />
     <Fila>0</Fila>
     <Columna>0</Columna>
@@ -309,88 +365,187 @@
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>46</Id>
-    <Lexema>.</Lexema>
+    <Id>124</Id>
+    <Lexema>|</Lexema>
     <Tipo />
     <Fila>0</Fila>
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>31</Id>
-    <Lexema>c</Lexema>
+    <Id>123</Id>
+    <Lexema>{</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
+    <Columna>20</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>letras</Lexema>
     <Tipo />
     <Fila>0</Fila>
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>31</Id>
-    <Lexema>d</Lexema>
+    <Id>125</Id>
+    <Lexema>}</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
+    <Columna>27</Columna>
+  </token>
+  <token>
+    <Id>123</Id>
+    <Lexema>{</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
+    <Columna>29</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>LETRAS</Lexema>
     <Tipo />
     <Fila>0</Fila>
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>46</Id>
-    <Lexema>.</Lexema>
+    <Id>125</Id>
+    <Lexema>}</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
+    <Columna>36</Columna>
+  </token>
+  <token>
+    <Id>123</Id>
+    <Lexema>{</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
+    <Columna>38</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>digitos</Lexema>
     <Tipo />
     <Fila>0</Fila>
     <Columna>0</Columna>
   </token>
   <token>
-    <Id>31</Id>
-    <Lexema>a</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>31</Id>
-    <Lexema>b</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>31</Id>
-    <Lexema>b</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>31</Id>
-    <Lexema>c</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>43</Id>
-    <Lexema>+</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>31</Id>
-    <Lexema>d</Lexema>
-    <Tipo />
-    <Fila>0</Fila>
-    <Columna>0</Columna>
-  </token>
-  <token>
-    <Id>59</Id>
-    <Lexema>;</Lexema>
-    <Tipo>Punto y coma</Tipo>
-    <Fila>10</Fila>
+    <Id>125</Id>
+    <Lexema>}</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>14</Fila>
     <Columna>46</Columna>
   </token>
   <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>14</Fila>
+    <Columna>47</Columna>
+  </token>
+  <token>
     <Id>30</Id>
-    <Lexema>er1</Lexema>
+    <Lexema>TODO</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>15</Fila>
+    <Columna>3</Columna>
+  </token>
+  <token>
+    <Id>45</Id>
+    <Lexema>-</Lexema>
+    <Tipo>Menos</Tipo>
+    <Fila>15</Fila>
+    <Columna>5</Columna>
+  </token>
+  <token>
+    <Id>62</Id>
+    <Lexema>&gt;</Lexema>
+    <Tipo>Mayor</Tipo>
+    <Fila>15</Fila>
+    <Columna>6</Columna>
+  </token>
+  <token>
+    <Id>42</Id>
+    <Lexema>*</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>124</Id>
+    <Lexema>|</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>124</Id>
+    <Lexema>|</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>124</Id>
+    <Lexema>|</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>123</Id>
+    <Lexema>{</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>15</Fila>
+    <Columna>16</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>todo</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>125</Id>
+    <Lexema>}</Lexema>
+    <Tipo>Abrir Llaves</Tipo>
+    <Fila>15</Fila>
+    <Columna>21</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>
+</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema></Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>	</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>15</Fila>
+    <Columna>37</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>17</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -401,24 +556,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>abecedario_cadena1_cadena2</Lexema>
+    <Lexema>#3C2E2E</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>17</Fila>
-    <Columna>32</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>17</Fila>
-    <Columna>34</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er1</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>18</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -429,24 +584,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>z</Lexema>
+    <Lexema>#520A0A</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>18</Fila>
-    <Columna>7</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>18</Fila>
-    <Columna>9</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er1</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>19</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -457,24 +612,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>1uno</Lexema>
+    <Lexema>#D88888</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>19</Fila>
-    <Columna>10</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>19</Fila>
-    <Columna>12</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er2</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>20</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -485,24 +640,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>aaaa</Lexema>
+    <Lexema>#41DA90</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>20</Fila>
-    <Columna>10</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>20</Fila>
-    <Columna>12</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er2</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>21</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -513,24 +668,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>bcdddd</Lexema>
+    <Lexema>#591224</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>21</Fila>
-    <Columna>12</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>21</Fila>
-    <Columna>14</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er2</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>22</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -541,24 +696,24 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>bcd</Lexema>
+    <Lexema>#BEB6B8</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>22</Fila>
-    <Columna>9</Columna>
+    <Columna>13</Columna>
   </token>
   <token>
     <Id>59</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
     <Fila>22</Fila>
-    <Columna>11</Columna>
+    <Columna>15</Columna>
   </token>
   <token>
     <Id>30</Id>
-    <Lexema>er2</Lexema>
+    <Lexema>EXP1</Lexema>
     <Tipo>Identificador</Tipo>
     <Fila>23</Fila>
-    <Columna>2</Columna>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>58</Id>
@@ -569,16 +724,48 @@
   </token>
   <token>
     <Id>31</Id>
-    <Lexema>ababcdabcdbc</Lexema>
+    <Lexema>2#143EA</Lexema>
     <Tipo>Texto</Tipo>
     <Fila>23</Fila>
-    <Columna>18</Columna>
+    <Columna>13</Columna>
+  </token>
+  <token>
+    <Id>59</Id>
+    <Lexema>;</Lexema>
+    <Tipo>Punto y coma</Tipo>
+    <Fila>23</Fila>
+    <Columna>15</Columna>
+  </token>
+  <token>
+    <Id>30</Id>
+    <Lexema>TODO</Lexema>
+    <Tipo>Identificador</Tipo>
+    <Fila>26</Fila>
+    <Columna>3</Columna>
+  </token>
+  <token>
+    <Id>58</Id>
+    <Lexema>:</Lexema>
+    <Tipo>Dos Puntos</Tipo>
+    <Fila>26</Fila>
+    <Columna>4</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>ADB
+
+	EFG
+	HI
+	JKL</Lexema>
+    <Tipo>Texto</Tipo>
+    <Fila>30</Fila>
+    <Columna>3</Columna>
   </token>
   <token>
     <Id>0</Id>
     <Lexema>;</Lexema>
     <Tipo>Punto y coma</Tipo>
-    <Fila>23</Fila>
-    <Columna>20</Columna>
+    <Fila>30</Fila>
+    <Columna>5</Columna>
   </token>
 </TokenGroup>

@@ -11,11 +11,12 @@ namespace Proyecto1_OLC1.manejador
     {
         int i = 0;
         List<Token> er;
+        public List<Conjunto> conjuntos;
 
         String nameEr; //Nombre de la expresion regular
         Automata raiz; //Contendra el Automata Final (que sera una lista de transiciones)
         Subconjuntos deterministas;
-        public Thompson(List<Token> er, string nameEr)
+        public Thompson(List<Token> er, string nameEr, List<Conjunto> lc)
         {
            
             foreach(Token t in er)
@@ -24,9 +25,10 @@ namespace Proyecto1_OLC1.manejador
                 t.Columna = 0;
                 t.Tipo = "";
             }
-           
+            
             this.er = er;            
             this.nameEr = nameEr;
+            this.conjuntos = lc;
             raiz = create();
             raiz.createAlfabeto(er);
             raiz.obtenerAcpetacion();
@@ -38,10 +40,10 @@ namespace Proyecto1_OLC1.manejador
             
         }
 
-        public void reportar()
+        public String reportar()
         {
             this.raiz.createAlfabeto(er);
-            raiz.graficar(NameEr);
+            return raiz.graficar(NameEr);
         }
 
         public string NameEr { get => nameEr; set => nameEr = value; }
@@ -273,7 +275,6 @@ namespace Proyecto1_OLC1.manejador
             return afn_union;
         }
 
-
         public Automata afnSimple(Token simboloRegex)
         {
             Automata automataFN = new Automata();
@@ -294,8 +295,6 @@ namespace Proyecto1_OLC1.manejador
             return automataFN;
 
         }
-
-
 
     }
 }

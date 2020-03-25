@@ -69,9 +69,8 @@ namespace Proyecto1_OLC1
                     }
                     System.Diagnostics.Process.Start("chrome", AppDomain.CurrentDomain.BaseDirectory + @"\report.xml");
                 }
-            
         }
-
+                
         private void buttonAnalizar_Click(object sender, EventArgs e)
         {
             limpieza();
@@ -165,8 +164,9 @@ namespace Proyecto1_OLC1
                     case '"':
                         contador = x;                  
                         contador++;
-                        cadena();      
-                        x = contador;
+                        cadena();
+                        
+                            x = contador;
                         break;
                     case '|':
                         contador = x;
@@ -215,18 +215,26 @@ namespace Proyecto1_OLC1
                             {
                                 contador++;
                                 listaTokens.Add(new Token((int)'\n', "\n", "Salto de linea", obtenerFila(contador), obtenerColumna(contador)));
-                            } else if (analizar[x + 1] == 't')
+                            }
+                            else if (analizar[x + 1] == 't')
                             {
-                                contador ++;
+                                contador++;
                                 listaTokens.Add(new Token((int)'\t', "\t", "Tabulacion", obtenerFila(contador), obtenerColumna(contador)));
-                            } else if (analizar[x + 1] == '\'')
+                            }
+                            else if (analizar[x + 1] == '\'')
                             {
                                 contador++;
                                 listaTokens.Add(new Token((int)'\'', "'", "Comilla Simple", obtenerFila(contador), obtenerColumna(contador)));
-                            } else if (analizar[x + 1] == '"')
+                            }
+                            else if (analizar[x + 1] == '"')
                             {
                                 contador++;
                                 listaTokens.Add(new Token((int)'"', "\"", "Comilla doble", obtenerFila(contador), obtenerColumna(contador)));
+                            }
+                            else if (analizar[x + 1] == 'r')
+                            {
+                                contador++;
+                                listaTokens.Add(new Token((int)'\r', "\r", "Tabulacion", obtenerFila(contador), obtenerColumna(contador)));
                             }
                             else
                             {
@@ -383,11 +391,25 @@ namespace Proyecto1_OLC1
                 if (listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada[contador] != '"')
                 {
                     concatenar = concatenar + listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada[contador].ToString();
+
+                    if (listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada[contador].ToString().Equals("\\"))
+                    {
+                        if (listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada[contador+1].ToString().Equals("\""))
+                        {
+                            concatenar = concatenar + listaEntrada.ElementAt(this.tabControl.SelectedIndex).TextoEntrada[contador+1].ToString();
+                            contador++;
+                        }
+                    }
+                    
                     contador++;
                     cadena();
                 }
                 else
                 {
+                    concatenar = concatenar.Replace("\\n", "\n");
+                    concatenar = concatenar.Replace("\\t", "\t");
+                    concatenar = concatenar.Replace("\\r", "\r");
+                    concatenar = concatenar.Replace("\\\"", "\"");
                     listaTokens.Add(new Token(31, concatenar, "Texto", obtenerFila(contador - 1), obtenerColumna(contador - 1)));
                     concatenar = "";
                 }
