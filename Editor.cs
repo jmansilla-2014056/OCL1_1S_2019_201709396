@@ -97,6 +97,7 @@ namespace Proyecto1_OLC1
                     case '\n':
                     case ' ':
                     case '\t':
+                    case '\r':
                         contador++;
                         x = contador;
                         break;

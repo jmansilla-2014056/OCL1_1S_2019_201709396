@@ -27,7 +27,20 @@ namespace Proyecto1_OLC1.models
 
         public String Descripciongraphviz()
         {
-            return inicio.NombreChar + "->" + final.NombreChar + " [label=\"" + simbolo.Lexema + "\"];\n";
+            if(simbolo.Id == 31)
+            {
+                return inicio.NombreChar + "->" + final.NombreChar + " [label=\"\\\"" + simbolo.Lexema
+                    .Replace("\t", "\\\\t")
+                    .Replace("\r", "\\\\r")
+                    .Replace("\n", "\\\\n")
+                    .Replace("\"", "\\\\\"") 
+                    + "\\\"\"];\n";
+            }
+            else
+            {
+                return inicio.NombreChar + "->" + final.NombreChar + " [label=\"" + simbolo.Lexema + "\"];\n";
+            }
+           
         }
     }
 }

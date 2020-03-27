@@ -247,7 +247,6 @@ namespace Proyecto1_OLC1.manejador
         //IMPRIME LA DESCRIPCION DEL AFD
         public void ImprimeAFD()
         {
-            Console.WriteLine("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
             for (int i = 0; i < DescripcionDelAFD.Count; i++)
             {
                 System.Windows.Forms.MessageBox.Show(DescripcionDelAFD.ElementAt(i).Descripcion());
@@ -258,7 +257,7 @@ namespace Proyecto1_OLC1.manejador
 
         public String graficar(string nombre)
         {
-            nombre = nombre + "AFD";
+            nombre = nombre + "_AFD";
             string texto = "digraph " + nombre + " {\n";
             texto += "\trankdir=LR;" + "\n";
 
@@ -292,6 +291,103 @@ namespace Proyecto1_OLC1.manejador
 
         }
 
+
+        public String sacaTablas(string nombre)
+        {
+
+            SortedSet<string> letras = new SortedSet<string>();
+            
+            foreach(AFD l in this.DescripcionDelAFD)
+            {
+                letras.Add(l.inicio.NombreChar);
+                letras.Add(l.final.NombreChar);
+            }
+
+            AFDEstado[,] tabla = new AFDEstado[letras.Count,alfabeto.Count];
+
+            int x = 0;
+            int y = 0;
+
+
+            foreach(string xx in letras)
+            {
+                y = 0;
+                foreach (Token yy in this.alfabeto)
+                {
+                    foreach(AFD es in this.DescripcionDelAFD)
+                    {
+                        if (xx.Equals(es.inicio.NombreChar) && yy.Lexema.Equals(es.simbolo.Lexema) && yy.Id == es.simbolo.Id)
+                        {
+                            tabla[x, y] = es.final;
+                            break;
+                        }
+                    }
+                    y++;
+                }
+                x++;
+            }
+
+
+            nombre = nombre + "_TABLA";
+            string texto = "digraph " + nombre + " {\n";
+                texto+="\n graph [ratio=fill];\n" +
+                "\n node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
+                "\n arset [label=<\n" +
+                "\n <TABLE ALIGN=\"LEFT\">\n" +
+                "\n         <TR>\n";
+                texto += "              <TD>Estado</TD>\n";
+                foreach (Token yy in this.alfabeto)
+                {
+                    texto += "              <TD>"+ yy.Lexema.Replace(">", "&#62;").Replace("<", "&#60;").Replace("\n", "\\n").Replace("\t", "\\t").Replace("\r", "\\r").Replace("\"", "\\\"")+"</TD>\n";
+                }
+
+            texto += "\n    </TR>\n";
+
+            for (int i = 0; i < letras.Count; i++)
+            {
+                texto += ("    <TR>\n");
+                texto += ("        <TD>");
+
+                AFD comprobar = this.DescripcionDelAFD.FirstOrDefault(p => p.final.NombreChar.Equals(letras.ElementAt(i)) && p.final.final == true);
+                if(comprobar != null)
+                {
+                    texto += (letras.ElementAt(i) + "*</TD>\n");
+                }
+                else
+                {
+                    texto += (letras.ElementAt(i) + "</TD>\n");
+                }
+                
+
+                for (int j = 0; j < alfabeto.Count; j++)
+                {
+                    texto += ("         <TD>");
+                    if(tabla[i, j] != null)
+                    {
+                        texto += tabla[i, j].NombreChar;
+
+                        if (tabla[i, j].final)
+                        {
+                            texto += "*";
+                        }
+                    }
+                    else
+                    {
+                        texto += "-";
+                    }
+                        texto+="</TD>\n";
+                }
+                texto += ("     </TR>\n");
+            }
+            texto += " </TABLE>\n" +
+                    "    >, ];\n" +
+                    "}";
+
+            texto += "\n }";
+            Generador g = new Generador();
+            return g.graficar(texto, nombre);
+
+        }
 
     }
 }

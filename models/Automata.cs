@@ -66,6 +66,7 @@ namespace Proyecto1_OLC1.models
 
         public String graficar(string nombre)
         {
+            List<string> ls = new List<string>();
             string texto = "digraph " + nombre +" {\n";
             texto += "\trankdir=LR;" + "\n";
 
@@ -89,12 +90,17 @@ namespace Proyecto1_OLC1.models
                 List<Estado> transiciones = e.Estados;
                 foreach(Estado t in transiciones)
                 {                   
-                        transicion = t;
-                        texto += "\t" + t.dotString() + "\n";                         
+                    transicion = t;
+                    if(!ls.Any(d=> d.Equals(t.dotString())))
+                    {
+                        ls.Add(t.dotString());
+                        texto += "\t" + t.dotString() + "\n";
+                    }                       
                 }
                              
             }
-            foreach(AFDEstado a in Aceptacion)
+
+            foreach (AFDEstado a in Aceptacion)
             {
                 texto += a.NombreId + "[shape=doublecircle]";
             }

@@ -37,7 +37,24 @@ namespace Proyecto1_OLC1.models
 
         public string dotString()
         {
-            return (this.Inicio.NombreId + " -> " + this.Fin.NombreId + " [label=\"" + this.Simbolo.Lexema + "\"];");
+            if (this.Simbolo.Id == 31)
+            {
+                return (this.Inicio.NombreId + " -> " + this.Fin.NombreId + " [label=\"\\\"" + this.Simbolo.Lexema.Replace("\n", "\\n")
+                    .Replace("\t", "\\\\t")
+                    .Replace("\r", "\\\\r")
+                    .Replace("\n", "\\\\n")
+                    .Replace("\"", "\\\\\"")
+                    + "\\\"\"];");
+            }
+            else
+            {
+                return (this.Inicio.NombreId + " -> " + this.Fin.NombreId + " [label=\"" + this.Simbolo.Lexema + "\"];");
+            }
+
+
+
+            
+
         }
 
     }

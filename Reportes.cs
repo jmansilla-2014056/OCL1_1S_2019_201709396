@@ -91,6 +91,25 @@ namespace Proyecto1_OLC1
         private void button2_Click(object sender, EventArgs e)
         {
 
+            Thompson thompson = listathompsons.FindLast(x => x.NameEr.Equals(this.comboER.SelectedItem.ToString()));
+            if (thompson != null)
+            {
+                seleccionado = thompson;
+                Image image = Image.FromFile(thompson.Deterministas.sacaTablas(thompson.NameEr));
+                while (true)
+                {
+                    if (image != null)
+                    {
+                        break;
+                    }
+                }
+                // this.pictureBox1.Image = image;
+                Clipboard.SetImage(image);
+                this.richTextBox2.ReadOnly = false;
+                this.richTextBox2.Clear();
+                this.richTextBox2.Paste();
+                this.richTextBox2.ReadOnly = true;
+            }
         }
 
 
