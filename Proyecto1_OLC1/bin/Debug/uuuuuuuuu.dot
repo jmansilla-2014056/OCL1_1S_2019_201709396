@@ -1,0 +1,19 @@
+digraph uuuuuuuuu {
+	rankdir=LR;
+	graph [label="uuuuuuuuu", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen]; 8 9 10 11 12 13 14 15 8 9 10 11 12 13 14 15;
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> 8 [label="inicio"];
+	8 -> 13 [label="ε"];
+	8 -> 9 [label="ε"];
+	9 -> 10 [label="\"a\""];
+	10 -> 11 [label="ε"];
+	11 -> 12 [label="\"b\""];
+	12 -> 15 [label="ε"];
+	13 -> 14 [label="ε"];
+	14 -> 15 [label="ε"];
+	15 -> 8 [label="ε"];
+15[shape=doublecircle]}

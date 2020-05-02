@@ -9,13 +9,13 @@ namespace Proyecto1_OLC1.models
 {
     public class Automata
     {
-        private AFDEstado inicial;
-        private List<AFDEstado> aceptacion;
-        private List<AFDEstado> estados;
+        public AFDEstado inicial;
+        public List<AFDEstado> aceptacion;
+        public List<AFDEstado> estados;
 
-        private HashSet<Token> alfabeto;
-        private String[] resultadoRegex;
-        private String lenguajeR;
+        public  HashSet<Token> alfabeto;
+        public  String[] resultadoRegex;
+        public  String lenguajeR;
 
         public AFDEstado Inicial { get => inicial; set => inicial = value; }
         public List<AFDEstado> Aceptacion { get => aceptacion; set => aceptacion = value; }

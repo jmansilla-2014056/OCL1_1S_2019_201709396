@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TokenGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <token>
+    <Id>46</Id>
+    <Lexema>.</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>46</Id>
+    <Lexema>.</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>46</Id>
+    <Lexema>.</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>42</Id>
+    <Lexema>*</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>124</Id>
+    <Lexema>|</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>46</Id>
+    <Lexema>.</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>c</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>d</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>46</Id>
+    <Lexema>.</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>a</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>b</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>b</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>c</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>43</Id>
+    <Lexema>+</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+  <token>
+    <Id>31</Id>
+    <Lexema>d</Lexema>
+    <Tipo />
+    <Fila>0</Fila>
+    <Columna>0</Columna>
+  </token>
+</TokenGroup>

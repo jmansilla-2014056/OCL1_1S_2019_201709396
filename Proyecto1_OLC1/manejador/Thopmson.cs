@@ -18,15 +18,15 @@ namespace Proyecto1_OLC1.manejador
         Subconjuntos deterministas;
         public Thompson(List<Token> er, string nameEr, List<Conjunto> lc)
         {
-           
-            foreach(Token t in er)
+
+            foreach (Token t in er)
             {
                 t.Fila = 0;
                 t.Columna = 0;
                 t.Tipo = "";
             }
-            
-            this.er = er;            
+
+            this.er = er;
             this.nameEr = nameEr;
             this.conjuntos = lc;
             raiz = create();
@@ -35,9 +35,11 @@ namespace Proyecto1_OLC1.manejador
             //  AFNtoAFD Afd = new AFNtoAFD(raiz);
 
             //  Determinista = Afd.Determinista;
+            raiz.graficar("perro");
             Subconjuntos s = new Subconjuntos(raiz);
+
             this.Deterministas = s;
-            
+
         }
 
         public String reportar()
@@ -76,15 +78,16 @@ namespace Proyecto1_OLC1.manejador
                     break;
                 case 43: //Operacion +
                     i++;
-                    Automata nMas = create(); //Optenemos a
-                    Automata nMasWithKleend = cerraduraKleene(nMas); //Optenemos *a
-                    Automata resultadoMas = concatenacion(nMasWithKleend, nMas); //Optenemos .a*a
-                    return resultadoMas;
+                    Automata nMas = create();
+                    Automata nMasWithKleend = concatenacionMas(nMas); //Optenemos *a               
+                    //Optenemos .a*a
+                    return nMasWithKleend;
                     break;
                 case 63: //Operacion ?
                     i++;
                     Automata nInterogacion = create(); //Optenemos a
                     Automata nEpsilon = afnSimple(new Token(999, "ε", "Epsilon", 0, 0)); //Optenemos ε
+                    i--;
                     Automata resultadoInterrogacion = union(nInterogacion, nEpsilon); //Optenemos |aε
                     return resultadoInterrogacion;
                     break;
@@ -100,7 +103,7 @@ namespace Proyecto1_OLC1.manejador
                     i++;
                     break;
             }
-            
+
             return null;
         }
 
@@ -147,6 +150,88 @@ namespace Proyecto1_OLC1.manejador
             return afn_kleene;
         }
 
+
+
+        public Automata concatenacionMas(Automata AFN2)
+        {
+
+            AFN2.graficar("AFN2_antes");
+            Automata AFN1 = new Automata();
+
+
+            AFN1.Inicial = new AFDEstado(AFN2.Inicial.NombreId  + AFN2.AFDEstados.Count);
+            
+            AFN1.Inicial.Estados.AddRange(AFN2.Inicial.Estados);
+
+            //    AFN1.Alfabeto = AFN2.alfabeto;
+
+
+            foreach (AFDEstado e in AFN2.AFDEstados)
+            {
+                AFDEstado aFDEstado = new AFDEstado(e.NombreId + AFN2.AFDEstados.Count);
+                List<Estado> nuevo = new List<Estado>();
+                List<Estado> transiciones = e.Estados;
+
+                foreach (Estado t in transiciones)
+                {
+                    Estado x = new Estado();
+                    x.Simbolo = t.Simbolo;
+
+                    x.Fin = new AFDEstado(t.Fin.NombreId + AFN2.AFDEstados.Count);
+                    x.Inicio = new AFDEstado(t.Inicio.NombreId + AFN2.AFDEstados.Count);
+
+                    x.Fin.Estados.AddRange(t.Fin.Estados);
+                    x.Inicio.Estados.AddRange(t.Inicio.Estados);
+                    if (x.Inicio.NombreId <= AFN2.AFDEstados.Count - 1)
+                    {
+                        x.Inicio.NombreId += t.Inicio.NombreId + AFN2.AFDEstados.Count - 1;
+                    }
+                    if (x.Fin.NombreId <= AFN2.AFDEstados.Count - 1)
+                    {
+                        x.Fin.NombreId += t.Fin.NombreId + AFN2.AFDEstados.Count - 1;
+                    }
+                    nuevo.Add(x);
+                }
+
+                aFDEstado.Estados = nuevo;
+                AFN1.estados.Add(aFDEstado);
+            }
+
+            foreach (AFDEstado r in AFN2.AFDEstados)
+            {
+                r.NombreId--;
+            }
+
+
+
+
+            Automata n = cerraduraKleene(AFN2);
+
+            foreach (AFDEstado x in AFN2.AFDEstados)
+            {
+                List<Estado> transiciones = x.Estados;
+
+                foreach (Estado t in transiciones)
+                {
+                    if(t.Fin.NombreId > AFN2.AFDEstados.Count)
+                    {
+                        t.Fin.NombreId--;
+                    }
+                }
+            }
+                
+            
+            AFN1.graficar("AFN1");
+            AFN2.graficar("AFN2");
+
+            Automata afn_concat = new Automata();
+            return concatenacion(AFN1, AFN2);
+            //se utiliza como contador para los estados del nuevo automata
+      
+        }
+
+
+
         public Automata concatenacion(Automata AFN1, Automata AFN2)
         {
 
@@ -162,7 +247,7 @@ namespace Proyecto1_OLC1.manejador
                 //se define el estado inicial
                 if (i == 0)
                 {
-                    afn_concat.Inicial = tmp ;
+                    afn_concat.Inicial = tmp;
                 }
                 //cuando llega al último, concatena el ultimo con el primero del otro automata con un epsilon
                 if (i == AFN2.AFDEstados.Count - 1)
@@ -190,7 +275,7 @@ namespace Proyecto1_OLC1.manejador
             }
 
             HashSet<Token> alfabeto = new HashSet<Token>();
-            foreach(Token token in AFN1.Alfabeto)
+            foreach (Token token in AFN1.Alfabeto)
             {
                 alfabeto.Add(token);
             }
@@ -199,7 +284,7 @@ namespace Proyecto1_OLC1.manejador
                 alfabeto.Add(token);
             }
             afn_concat.Alfabeto = alfabeto;
-            afn_concat.LenguajeR = AFN1.LenguajeR+ " " + AFN2.LenguajeR;
+            afn_concat.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;
 
             return afn_concat;
         }
@@ -211,7 +296,7 @@ namespace Proyecto1_OLC1.manejador
             //se crea un nuevo estado inicial
             AFDEstado nuevoInicio = new AFDEstado(0);
             //se crea una transicion del nuevo estado inicial al primer automata
-            nuevoInicio.Estados.Add(new Estado(nuevoInicio, AFN2.Inicial, new Token(999, "ε","Epsilon",0,0)));
+            nuevoInicio.Estados.Add(new Estado(nuevoInicio, AFN2.Inicial, new Token(999, "ε", "Epsilon", 0, 0)));
 
             afn_union.AFDEstados.Add(nuevoInicio);
             afn_union.Inicial = nuevoInicio;
@@ -239,29 +324,29 @@ namespace Proyecto1_OLC1.manejador
 
             AFDEstado anteriorInicio = AFN1.Inicial;
             List<AFDEstado> anteriorFin = AFN1.Aceptacion;
-            List<AFDEstado> anteriorFin2 = AFN2.Aceptacion;    
+            List<AFDEstado> anteriorFin2 = AFN2.Aceptacion;
 
             // agregar transiciones desde el nuevo estado inicial
             nuevoInicio.Estados.Add(new Estado(nuevoInicio, anteriorInicio, new Token(999, "ε", "Epsilon", 0, 0)));
 
             // agregar transiciones desde el anterior AFN 1 al estado final
             for (int k = 0; k < anteriorFin.Count; k++)
-                anteriorFin.ElementAt(k).Estados.Add(new Estado(anteriorFin.ElementAt(k),nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
+                anteriorFin.ElementAt(k).Estados.Add(new Estado(anteriorFin.ElementAt(k), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
             // agregar transiciones desde el anterior AFN 2 al estado final
             for (int k = 0; k < anteriorFin.Count; k++)
                 anteriorFin2.ElementAt(k).Estados.Add(new Estado(anteriorFin2.ElementAt(k), nuevoFin, new Token(999, "ε", "Epsilon", 0, 0)));
 
             HashSet<Token> alfabeto = new HashSet<Token>();
-            foreach(Token token in AFN1.Alfabeto)
+            foreach (Token token in AFN1.Alfabeto)
             {
-                if(alfabeto.FirstOrDefault(x=> x.Id==token.Id && x.Lexema.Equals(token.Lexema)) == null)
+                if (alfabeto.FirstOrDefault(x => x.Id == token.Id && x.Lexema.Equals(token.Lexema)) == null)
                 {
                     alfabeto.Add(token);
                 }
-                
+
             }
-            
-            foreach(Token token in AFN2.Alfabeto)
+
+            foreach (Token token in AFN2.Alfabeto)
             {
                 if (alfabeto.FirstOrDefault(x => x.Id == token.Id && x.Lexema.Equals(token.Lexema)) == null)
                 {
@@ -271,7 +356,7 @@ namespace Proyecto1_OLC1.manejador
             afn_union.Alfabeto = alfabeto;
             afn_union.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;
             afn_union.LenguajeR = AFN1.LenguajeR + " " + AFN2.LenguajeR;
-           
+
             return afn_union;
         }
 

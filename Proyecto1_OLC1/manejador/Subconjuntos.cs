@@ -14,12 +14,13 @@ namespace Proyecto1_OLC1.manejador
         int inicial;
         AFDEstado afdInicial;
         //PILAS Y ARREGLOS PARA EL MANEJO DE DATOS
-        List<Estado> estados = new List<Estado>();
+        HashSet<Estado> estados = new HashSet<Estado>();
         Stack<Estado> estados_pendientes = new Stack<Estado>();
         List<AFDEstado> tablaDeEstados = new List<AFDEstado>();
         Queue<AFDEstado> AFDpendientes = new Queue<AFDEstado>();
         public List<AFD> DescripcionDelAFD = new List<AFD>();
         Automata automata;
+        int contador = 0;
 
         public Subconjuntos(Automata a)
         {
@@ -38,6 +39,8 @@ namespace Proyecto1_OLC1.manejador
                 List<Estado> transiciones = e.Estados;
                 foreach (Estado t in transiciones)
                 {
+                    Console.WriteLine(t.dotString());
+                    if(!estados.Any(x=> x.dotString().Equals(t.dotString())))
                     estados.Add(t);
                 }
 
@@ -48,7 +51,7 @@ namespace Proyecto1_OLC1.manejador
         {
             //CERRADURA EPSILON AL ESTADO INICIAL
             Cerradura(null, inicial, new Token(999, "ε", "Epsilon", 0, 0), 1);
-
+ 
             //CALCULAMOS LOS DISTINTOS ESTADOS
             while (AFDpendientes.Count > 0)
             {
@@ -182,6 +185,7 @@ namespace Proyecto1_OLC1.manejador
 
         private AFDEstado Cerradura(AFDEstado estadoactual, int inicio, Token simbolo, int Nombre)
         {
+
             AFDEstado estado;
             if (estadoactual == null)
             {
@@ -216,7 +220,8 @@ namespace Proyecto1_OLC1.manejador
             }
             while (estados_pendientes.Count > 0)
             {
-                Cerradura(estado, estados_pendientes.Pop().Fin.NombreId, simbolo, estado.NombreId);
+
+                Cerradura(estado, estados_pendientes.Pop().Fin.NombreId, simbolo, estado.NombreId);                
             }
             if (!AFDpendientes.Contains(estado))
             {
@@ -281,7 +286,7 @@ namespace Proyecto1_OLC1.manejador
                 {
                     texto += "\n";
                     texto += "\t";
-                    texto +=  tablaDeEstados.ElementAt(i).NombreChar + "[shape=doublecircle];";
+                    texto += tablaDeEstados.ElementAt(i).NombreChar + "[shape=doublecircle];";
                 }
             }
 
@@ -296,25 +301,25 @@ namespace Proyecto1_OLC1.manejador
         {
 
             SortedSet<string> letras = new SortedSet<string>();
-            
-            foreach(AFD l in this.DescripcionDelAFD)
+
+            foreach (AFD l in this.DescripcionDelAFD)
             {
                 letras.Add(l.inicio.NombreChar);
                 letras.Add(l.final.NombreChar);
             }
 
-            AFDEstado[,] tabla = new AFDEstado[letras.Count,alfabeto.Count];
+            AFDEstado[,] tabla = new AFDEstado[letras.Count, alfabeto.Count];
 
             int x = 0;
             int y = 0;
 
 
-            foreach(string xx in letras)
+            foreach (string xx in letras)
             {
                 y = 0;
                 foreach (Token yy in this.alfabeto)
                 {
-                    foreach(AFD es in this.DescripcionDelAFD)
+                    foreach (AFD es in this.DescripcionDelAFD)
                     {
                         if (xx.Equals(es.inicio.NombreChar) && yy.Lexema.Equals(es.simbolo.Lexema) && yy.Id == es.simbolo.Id)
                         {
@@ -330,16 +335,16 @@ namespace Proyecto1_OLC1.manejador
 
             nombre = nombre + "_TABLA";
             string texto = "digraph " + nombre + " {\n";
-                texto+="\n graph [ratio=fill];\n" +
-                "\n node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
-                "\n arset [label=<\n" +
-                "\n <TABLE ALIGN=\"LEFT\">\n" +
-                "\n         <TR>\n";
-                texto += "              <TD>Estado</TD>\n";
-                foreach (Token yy in this.alfabeto)
-                {
-                    texto += "              <TD>"+ yy.Lexema.Replace(">", "&#62;").Replace("<", "&#60;").Replace("\n", "\\n").Replace("\t", "\\t").Replace("\r", "\\r").Replace("\"", "\\\"")+"</TD>\n";
-                }
+            texto += "\n graph [ratio=fill];\n" +
+            "\n node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
+            "\n arset [label=<\n" +
+            "\n <TABLE ALIGN=\"LEFT\">\n" +
+            "\n         <TR>\n";
+            texto += "              <TD>Estado</TD>\n";
+            foreach (Token yy in this.alfabeto)
+            {
+                texto += "              <TD>" + yy.Lexema.Replace(">", "&#62;").Replace("<", "&#60;").Replace("\n", "\\n").Replace("\t", "\\t").Replace("\r", "\\r").Replace("\"", "\\\"") + "</TD>\n";
+            }
 
             texto += "\n    </TR>\n";
 
@@ -349,7 +354,7 @@ namespace Proyecto1_OLC1.manejador
                 texto += ("        <TD>");
 
                 AFD comprobar = this.DescripcionDelAFD.FirstOrDefault(p => p.final.NombreChar.Equals(letras.ElementAt(i)) && p.final.final == true);
-                if(comprobar != null)
+                if (comprobar != null)
                 {
                     texto += (letras.ElementAt(i) + "*</TD>\n");
                 }
@@ -357,12 +362,12 @@ namespace Proyecto1_OLC1.manejador
                 {
                     texto += (letras.ElementAt(i) + "</TD>\n");
                 }
-                
+
 
                 for (int j = 0; j < alfabeto.Count; j++)
                 {
                     texto += ("         <TD>");
-                    if(tabla[i, j] != null)
+                    if (tabla[i, j] != null)
                     {
                         texto += tabla[i, j].NombreChar;
 
@@ -375,7 +380,7 @@ namespace Proyecto1_OLC1.manejador
                     {
                         texto += "-";
                     }
-                        texto+="</TD>\n";
+                    texto += "</TD>\n";
                 }
                 texto += ("     </TR>\n");
             }
