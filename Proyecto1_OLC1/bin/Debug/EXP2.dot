@@ -1,0 +1,32 @@
+digraph EXP2 {
+	rankdir=LR;
+	graph [label="EXP2", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen]; 0 4 5 3 4 5 6 7 8 9 10 11 15 16 14 15 16 17 18 19;
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> 0 [label="inicio"];
+	0 -> 4 [label="ε"];
+	0 -> 3 [label="ε"];
+	4 -> 5 [label="letras"];
+	5 -> 4 [label="ε"];
+	5 -> 3 [label="ε"];
+	5 -> 6 [label="ε"];
+	3 -> 4 [label="ε"];
+	6 -> 7 [label="num"];
+	7 -> 8 [label="ε"];
+	8 -> 17 [label="ε"];
+	8 -> 9 [label="ε"];
+	9 -> 10 [label="\":\""];
+	10 -> 11 [label="ε"];
+	11 -> 15 [label="ε"];
+	11 -> 14 [label="ε"];
+	15 -> 16 [label="letra"];
+	16 -> 15 [label="ε"];
+	16 -> 14 [label="ε"];
+	16 -> 19 [label="ε"];
+	14 -> 15 [label="ε"];
+	17 -> 18 [label="ε"];
+	18 -> 19 [label="ε"];
+19[shape=doublecircle]}

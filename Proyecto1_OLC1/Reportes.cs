@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,9 +46,11 @@ namespace Proyecto1_OLC1
                         break;
                     }
                 }
+                Thread.Sleep(1000);
                 Clipboard.SetImage(image);
                 this.richTextBox2.ReadOnly = false;
                 this.richTextBox2.Clear();
+                Thread.Sleep(1000);
                 this.richTextBox2.Paste();
                 this.richTextBox2.ReadOnly = true;
             }
@@ -69,9 +72,11 @@ namespace Proyecto1_OLC1
                     }
                 }
                 // this.pictureBox1.Image = image;
+                Thread.Sleep(1000);
                 Clipboard.SetImage(image);
                 this.richTextBox2.ReadOnly = false;
                 this.richTextBox2.Clear();
+                Thread.Sleep(1000);
                 this.richTextBox2.Paste();
                 this.richTextBox2.ReadOnly = true;
             }
@@ -104,10 +109,12 @@ namespace Proyecto1_OLC1
                     }
                 }
                 // this.pictureBox1.Image = image;
+                Thread.Sleep(1000);
                 Clipboard.SetImage(image);
                 this.richTextBox2.ReadOnly = false;
                 this.richTextBox2.Clear();
-                this.richTextBox2.Paste();
+                Thread.Sleep(1000);
+                this.richTextBox2.Paste(); 
                 this.richTextBox2.ReadOnly = true;
             }
         }

@@ -1,0 +1,55 @@
+digraph TODO_AFD {
+	rankdir=LR;
+	graph [label="TODO_AFD", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen];
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> A [label="inicio"];
+
+	A->B [label="todo"];
+
+	A->C [label="\"\\n\""];
+
+	A->D [label="\"\\r\""];
+
+	A->E [label="\"\\t\""];
+
+	B->B [label="todo"];
+
+	B->C [label="\"\\n\""];
+
+	B->D [label="\"\\r\""];
+
+	B->E [label="\"\\t\""];
+
+	C->B [label="todo"];
+
+	C->C [label="\"\\n\""];
+
+	C->D [label="\"\\r\""];
+
+	C->E [label="\"\\t\""];
+
+	D->B [label="todo"];
+
+	D->C [label="\"\\n\""];
+
+	D->D [label="\"\\r\""];
+
+	D->E [label="\"\\t\""];
+
+	E->B [label="todo"];
+
+	E->C [label="\"\\n\""];
+
+	E->D [label="\"\\r\""];
+
+	E->E [label="\"\\t\""];
+
+	B[shape=doublecircle];
+	C[shape=doublecircle];
+	D[shape=doublecircle];
+	E[shape=doublecircle];
+ }

@@ -1,0 +1,50 @@
+digraph IP_TABLA {
+
+ graph [ratio=fill];
+
+ node [label="\N", fontsize=15, shape=plaintext];
+
+ arset [label=<
+
+ <TABLE ALIGN="LEFT">
+
+         <TR>
+              <TD>Estado</TD>
+              <TD>D</TD>
+              <TD>.</TD>
+
+    </TR>
+    <TR>
+        <TD>A</TD>
+         <TD>B</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>B</TD>
+         <TD>C</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>C</TD>
+         <TD>C</TD>
+         <TD>D</TD>
+     </TR>
+    <TR>
+        <TD>D</TD>
+         <TD>E</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>E</TD>
+         <TD>F</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>F</TD>
+         <TD>F</TD>
+         <TD>D</TD>
+     </TR>
+ </TABLE>
+    >, ];
+}
+ }

@@ -1,0 +1,43 @@
+digraph UserInstagram_AFD {
+	rankdir=LR;
+	graph [label="UserInstagram_AFD", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen];
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> A [label="inicio"];
+
+	A->B [label="\"@\""];
+
+	B->C [label="L"];
+
+	C->D [label="L"];
+
+	C->E [label="D"];
+
+	C->F [label="\"_\""];
+
+	D->D [label="L"];
+
+	D->E [label="D"];
+
+	D->F [label="\"_\""];
+
+	E->D [label="L"];
+
+	E->E [label="D"];
+
+	E->F [label="\"_\""];
+
+	F->D [label="L"];
+
+	F->E [label="D"];
+
+	F->F [label="\"_\""];
+
+	C[shape=doublecircle];
+	D[shape=doublecircle];
+	E[shape=doublecircle];
+	F[shape=doublecircle];
+ }

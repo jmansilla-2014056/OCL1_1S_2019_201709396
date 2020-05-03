@@ -1,0 +1,111 @@
+digraph Mail_TABLA {
+
+ graph [ratio=fill];
+
+ node [label="\N", fontsize=15, shape=plaintext];
+
+ arset [label=<
+
+ <TABLE ALIGN="LEFT">
+
+         <TR>
+              <TD>Estado</TD>
+              <TD>L</TD>
+              <TD>D</TD>
+              <TD>_</TD>
+              <TD>@</TD>
+              <TD>.</TD>
+
+    </TR>
+    <TR>
+        <TD>A</TD>
+         <TD>B</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>B</TD>
+         <TD>C</TD>
+         <TD>D</TD>
+         <TD>E</TD>
+         <TD>F</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>C</TD>
+         <TD>C</TD>
+         <TD>D</TD>
+         <TD>E</TD>
+         <TD>F</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>D</TD>
+         <TD>C</TD>
+         <TD>D</TD>
+         <TD>E</TD>
+         <TD>F</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>E</TD>
+         <TD>C</TD>
+         <TD>D</TD>
+         <TD>E</TD>
+         <TD>F</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>F</TD>
+         <TD>G</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>G</TD>
+         <TD>H</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>I</TD>
+     </TR>
+    <TR>
+        <TD>H</TD>
+         <TD>H</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>I</TD>
+     </TR>
+    <TR>
+        <TD>I</TD>
+         <TD>J*</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>J*</TD>
+         <TD>K*</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+     </TR>
+    <TR>
+        <TD>K*</TD>
+         <TD>K*</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+         <TD>-</TD>
+     </TR>
+ </TABLE>
+    >, ];
+}
+ }

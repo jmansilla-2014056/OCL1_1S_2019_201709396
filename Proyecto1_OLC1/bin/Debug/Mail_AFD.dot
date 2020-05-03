@@ -1,0 +1,63 @@
+digraph Mail_AFD {
+	rankdir=LR;
+	graph [label="Mail_AFD", labelloc=t, fontsize=20]; 
+	node [style = filled,color = mediumseagreen];
+	node [shape=circle];
+	node [color=midnightblue,fontcolor=white];
+	edge [color=red];
+	secret_node [style=invis];
+	secret_node -> A [label="inicio"];
+
+	A->B [label="L"];
+
+	B->C [label="L"];
+
+	B->D [label="D"];
+
+	B->E [label="\"_\""];
+
+	B->F [label="\"@\""];
+
+	C->C [label="L"];
+
+	C->D [label="D"];
+
+	C->E [label="\"_\""];
+
+	C->F [label="\"@\""];
+
+	D->C [label="L"];
+
+	D->D [label="D"];
+
+	D->E [label="\"_\""];
+
+	D->F [label="\"@\""];
+
+	E->C [label="L"];
+
+	E->D [label="D"];
+
+	E->E [label="\"_\""];
+
+	E->F [label="\"@\""];
+
+	F->G [label="L"];
+
+	G->H [label="L"];
+
+	G->I [label="\".\""];
+
+	H->H [label="L"];
+
+	H->I [label="\".\""];
+
+	I->J [label="L"];
+
+	J->K [label="L"];
+
+	K->K [label="L"];
+
+	J[shape=doublecircle];
+	K[shape=doublecircle];
+ }

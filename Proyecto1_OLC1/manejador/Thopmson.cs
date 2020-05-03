@@ -35,7 +35,6 @@ namespace Proyecto1_OLC1.manejador
             //  AFNtoAFD Afd = new AFNtoAFD(raiz);
 
             //  Determinista = Afd.Determinista;
-            raiz.graficar("perro");
             Subconjuntos s = new Subconjuntos(raiz);
 
             this.Deterministas = s;
@@ -79,9 +78,9 @@ namespace Proyecto1_OLC1.manejador
                 case 43: //Operacion +
                     i++;
                     Automata nMas = create();
-                    Automata nMasWithKleend = concatenacionMas(nMas); //Optenemos *a               
+                  //  Automata nMasWithKleend = concatenacionMas(nMas); //Optenemos *a               
                     //Optenemos .a*a
-                    return nMasWithKleend;
+                    return concatenacion(nMas, cerraduraKleene(nMas));
                     break;
                 case 63: //Operacion ?
                     i++;
@@ -155,7 +154,6 @@ namespace Proyecto1_OLC1.manejador
         public Automata concatenacionMas(Automata AFN2)
         {
 
-            AFN2.graficar("AFN2_antes");
             Automata AFN1 = new Automata();
 
 
@@ -202,9 +200,6 @@ namespace Proyecto1_OLC1.manejador
                 r.NombreId--;
             }
 
-
-
-
             Automata n = cerraduraKleene(AFN2);
 
             foreach (AFDEstado x in AFN2.AFDEstados)
@@ -221,9 +216,6 @@ namespace Proyecto1_OLC1.manejador
             }
                 
             
-            AFN1.graficar("AFN1");
-            AFN2.graficar("AFN2");
-
             Automata afn_concat = new Automata();
             return concatenacion(AFN1, AFN2);
             //se utiliza como contador para los estados del nuevo automata
