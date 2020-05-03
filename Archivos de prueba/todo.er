@@ -1,0 +1,14 @@
+<!
+   alungos conjuntos simples
+!>
+
+CONJ: letras -> a~z;
+CONJ: enter -> \n;
+CONJ: num -> 0~9;
+CONJ: comillas -> \";
+CONJ: cualquiercosa -> [:ASLTORU:]; 
+CONJ: caresp -> \n,\t;
+exp -> . * | | | {cualquiercosa} {caresp} {comillas} "'" ";"; 
+exp: "U\"R\"OT'LS'A;";//correcto 
+//correcto
+                  
